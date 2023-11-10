@@ -23,7 +23,7 @@
         <h2>Show Timings</h2>
         <a>
         <div class="container">
-            <h2 style="text-align: center; padding: 0">Add Show Timings</h2>
+            <h2 style="text-align: center; padding: 0">Add Seats</h2>
             <br>
         </br>
             <!-- Add Movie Form -->

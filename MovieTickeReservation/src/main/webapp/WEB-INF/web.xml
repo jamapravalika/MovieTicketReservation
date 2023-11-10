@@ -47,6 +47,13 @@
  	<servlet-name>TheaterServlet</servlet-name>
  	<servlet-class>com.Servlets.TheaterServlet</servlet-class>
  </servlet>
+ <servlet>
+ 	<description>
+ 	</description>
+ 	<display-name>Search</display-name>
+ 	<servlet-name>Search</servlet-name>
+ 	<servlet-class>com.Servlets.Search</servlet-class>
+ </servlet>
 
     
     <servlet-mapping>
@@ -64,6 +71,10 @@
     <servlet-mapping>
     	<servlet-name>TheaterServlet</servlet-name>
     	<url-pattern>/TheaterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>Search</servlet-name>
+    	<url-pattern>/Search</url-pattern>
     </servlet-mapping>
     
 
