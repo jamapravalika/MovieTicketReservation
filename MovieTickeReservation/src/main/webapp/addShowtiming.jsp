@@ -15,7 +15,7 @@
         <li><a href="/MovieTicketBookingSystem/dmovie"><i class="fa fa-film"></i> View Movies</a></li>
         <li><a href="UserTable.jsp"><i class="fa fa-users"></i> Users</a></li>
         <li><a href="theater.jsp"><i class="fa fa-building"></i> Theaters</a></li>
-        <li><a href="showtimings.jsp"><i class="fa fa-building"></i> Show Timings</a></li>
+        <li><a href="addShowtiming.jsp"><i class="fa fa-building"></i> Show Timings</a></li>
         <li><a href="Seats.jsp"><i class="fa fa-building"></i> Seats</a></li>
       </ul>
     </nav>
@@ -27,11 +27,11 @@
             <br>
         </br>
             <!-- Add Movie Form -->
-<form enctype="multipart/form-data" action="Hello" method="post">
+<form enctype="multipart/form-data" action="ShowTimingsServlet" method="post">
     <!-- Existing fields -->
     
     <div class="form-group">
-        <label for="movieId">Movie Id</label>
+        <label for="moviename">Movie name</label>
         <input type="number" class="form-control" id="movieId" name="movieId" required>
     </div>
     
