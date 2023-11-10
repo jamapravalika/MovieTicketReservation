@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.movie</groupId>
+    <artifactId>MovieTickeReservation</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>MovieTickeReservation Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <junit.version>4.12</junit.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <junit.platform.version>1.7.0</junit.platform.version>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <!-- JUnit 5 dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit.platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+    <groupId>org.junit.vintage</groupId>
+    <artifactId>junit-vintage-engine</artifactId>
+    <version>5.7.0</version>
+    <scope>test</scope>
+</dependency>
+
+        <!-- Other dependencies -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>MovieTickeReservation</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <dependencies>
+                    <dependency>
+    					<groupId>org.junit.platform</groupId>
+   						<artifactId>junit-platform-surefire-provider</artifactId>
+    					<version>1.8.0</version> <!-- Use a version available in your repository -->
+					</dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,258 @@
+.custom-card-image {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+/*     align-self: center; */
+    
+}
+.modal img{
+	padding-left:20%;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px;
+}
+.form-control {
+    display: block;
+    /* width: 100%; */
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.card {
+    width: 250px;
+    margin-bottom: 20px; 
+    border: 1px solid #ddd;
+    border-radius: 5px; 
+}
+.card-body p{
+	color: #cb4812;
+}
+.hny-title {
+    margin-left: 7%;
+}
+
+.btn {
+    background-color: rgb(169, 48, 24);
+    color: white; 
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    color:rgb(11, 11, 11);
+    background: linear-gradient(90deg, rgba(244, 11, 11, 0.8), rgba(245, 240, 240, 0.8) 87.19%);
+}
+
+.carousel-inner > .carousel-item > img {
+        width: 70%;
+        margin: auto;
+        display: block;
+        position: relative;
+        border-radius: 10px;
+    }
+
+    .carousel-item {
+        border: 1px solid #ddd;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s;
+        background: linear-gradient(#825ef83a, hwb(280 55% 1% / 0.216));
+    }
+
+    .carousel-item:hover {
+        background-color: #f0f0f0;
+    }
+
+    .carousel-inner > .carousel-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .carousel-caption {
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+    }
+
+    .carousel {
+        background-color: transparent;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+    }
+
+    /* Additional styles */
+
+    /* Add a border-radius to carousel controls */
+    .carousel-control-prev, .carousel-control-next {
+        border-radius: 50%;
+    }
+
+    /* Add styles to indicator bullets */
+    .carousel-indicators li {
+        background-color: #007BFF; /* Change to your preferred color */
+        border: 2px solid #007BFF;
+        width: 12px;
+        height: 12px;
+        margin: 0 6px;
+        border-radius: 50%;
+    }
+
+    /* Style active indicator */
+    .carousel-indicators .active {
+        background-color: #007BFF; /* Change to your preferred color */
+        border-color: #007BFF;
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .owl-carousel {
+    /* display: none; */
+    /* width: 100%;
+    z-index: 1;
+}
+.owl-carousel, .owl-carousel .owl-item {
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+} */ 
+
+/* <section class="w3l-main-slider position-relative" id="home">
+<div class="companies20-content">
+    <div class="owl-one owl-carousel owl-theme">
+        <div class="item">
+            <li>
+                <div class="slider-info banner-view bg bg2">
+                    <div class="banner-info">
+                        <h3>Jawan Movie Trailer</h3>
+                        <p>
+                            A high-octane action thriller that outlines<span
+                                class="over-para"> the emotional journey of a man who
+                                is set to rectify the wrongs in society.</span>
+                        </p>
+                        <a href="#small-dialog1" class="popup-with-zoom-anim play-view1">
+                            <span class="video-play-icon"> <span class="fa fa-play"
+                                style="align-items: center;"></span>
+                        </span>
+                            <h6>Watch Trailer</h6>
+                        </a>
+                        <div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
+                            <iframe src="trailervideos\JawanTrailer.mp4"
+                                allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div>
+        <div class="item">
+            <li>
+                <div class="slider-info  banner-view banner-top1 bg bg2">
+                    <div class="banner-info">
+                        <h3>Miss Shetty Mr Polishetty</h3>
+                        <p>
+                            While Miss Shetty is a feminist living in London and wants to
+                            be single forever,<span class="over-para"> Mr.
+                                Polishetty from Hyderabad wants to be in a committed
+                                relationship. Despite being in different stages of life, they
+                                connect.</span>
+                        </p>
+                        <a href="#small-dialog2" class="popup-with-zoom-anim play-view1">
+                            <span class="video-play-icon"> <span class="fa fa-play"></span>
+                        </span>
+                            <h6>Watch Trailer</h6>
+                        </a>
+                        <div id="small-dialog2" class="zoom-anim-dialog mfp-hide">
+                            <iframe src="https://player.vimeo.com/video/395376850"
+                                allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div>
+        <div class="item">
+            <li>
+                <div class="slider-info banner-view banner-top2 bg bg2">
+                    <div class="banner-info">
+                        <h3>Joker</h3>
+                        <p>"Joker" is a dark and gritty psychological thriller film
+                            directed by Todd Phillips. Joker is known for its
+                            thought-provoking themes, social commentary, and its portrayal
+                            of a character study that delves deep into the complexities of
+                            human nature.</p>
+                        <a href="#small-dialog3" class="popup-with-zoom-anim play-view1">
+                            <span class="video-play-icon"> <span class="fa fa-play"></span>
+                        </span>
+                            <h6>Watch Trailer</h6>
+                        </a>
+                        <div id="small-dialog3" class="zoom-anim-dialog mfp-hide">
+                            <iframe src="https://player.vimeo.com/video/389969665"
+                                allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div>
+        <div class="item">
+            <li>
+                <div class="slider-info banner-view banner-top3 bg bg2">
+                    <div class="banner-info">
+                        <h3>Paw Patrol: The Mighty Movie</h3>
+                        <p>
+                            When a magical meteor crash lands in Adventure City, it gives
+                            the Paw Patrol pups<span class="over-para"> superpowers,
+                                transforming them into The Mighty Pups!</span>
+                        </p>
+                        <a href="#small-dialog4" class="popup-with-zoom-anim play-view1">
+                            <span class="video-play-icon"> <span class="fa fa-play"></span>
+                        </span>
+                            <h6>Watch Trailer</h6>
+                        </a>
+                        <div id="small-dialog4" class="zoom-anim-dialog mfp-hide">
+                            <iframe src="https://player.vimeo.com/video/323491174"
+                                allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div>
+
+    </div>
+</div>
+</section>  */

@@ -1,0 +1,49 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <display-name>My Web Application</display-name>
+    
+    <servlet>
+        <servlet-name>MovieServlet</servlet-name>
+        <servlet-class>com.Servlets.MovieServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>MovieServlet</servlet-name>
+        <url-pattern>/MovieServlet</url-pattern>
+    </servlet-mapping>
+    
+ <servlet>
+    <servlet-name>DisplayMovies</servlet-name>
+    <servlet-class>com.Servlets.DisplayMovies</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>DisplayMovies</servlet-name>
+    <url-pattern>/dmovie</url-pattern>
+</servlet-mapping>
+ <servlet>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>com.example.BookingServlet</servlet-class>
+    </servlet>
+ <servlet>
+ 	<description>
+ 	</description>
+ 	<display-name>SeatServlet</display-name>
+ 	<servlet-name>SeatServlet</servlet-name>
+ 	<servlet-class>com.Servlets.SeatServlet</servlet-class>
+ </servlet>
+
+    
+    <servlet-mapping>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/booking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>SeatServlet</servlet-name>
+    	<url-pattern>/show</url-pattern>
+    </servlet-mapping>
+    
+
+    
+</web-app>
