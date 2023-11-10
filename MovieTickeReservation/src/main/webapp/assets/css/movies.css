@@ -42,17 +42,6 @@
     margin-left: 7%;
 }
 
-.btn {
-    background-color: rgb(169, 48, 24);
-    color: white; 
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    color:rgb(11, 11, 11);
-    background: linear-gradient(90deg, rgba(244, 11, 11, 0.8), rgba(245, 240, 240, 0.8) 87.19%);
-}
-
 .carousel-inner > .carousel-item > img {
         width: 70%;
         margin: auto;
@@ -121,7 +110,134 @@
         border-color: #007BFF;
     }
     
-    
+    .modal.fade {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-backdrop.fade {
+  opacity: 0;
+}
+.def-number-input {
+  display: inline-block;
+  max-width: 120px;
+  
+}
+
+/* Styles for the plus and minus buttons */
+.def-number-input button {
+  font-size: 20px;
+  width: 26px;
+  height: 33px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.def-number-input button:hover {
+  background-color: #f1f1f1;
+}
+.btn-primary {
+display: inline-block;
+            padding: 10px 70px;
+            background: linear-gradient(90deg, rgba(244, 11, 11, 0.8), rgba(0, 0, 0, 0.8) 87.19%);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 20.19%, rgba(244, 11, 11, 0.8));
+
+        }
+/* inner modal */
+
+.number-input input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.number-input input[type=number]::-webkit-inner-spin-button,
+.number-input input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.number-input {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.number-input button {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type=number] {
+  text-align: center;
+}
+
+.number-input.number-input {
+  border: 1px solid #ced4da;
+  width: 10rem;
+  border-radius: .25rem;
+}
+
+.number-input.number-input button {
+  width: 2.6rem;
+  height: .7rem;
+}
+
+.number-input.number-input button.minus {
+  padding-left: 10px;
+}
+
+.number-input.number-input button:before,
+.number-input.number-input button:after {
+  width: .7rem;
+  background-color: #495057;
+}
+
+.number-input.number-input input[type=number] {
+  max-width: 4rem;
+  padding: .5rem;
+  border: 1px solid #ced4da;
+  border-width: 0 1px;
+  font-size: 1rem;
+  height: 2rem;
+  color: #495057;
+}
+
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color:transparent) {
+
+    .number-input.def-number-input.safari_only button:before,
+    .number-input.def-number-input.safari_only button:after {
+      margin-top: -.3rem;
+    }
+  }
+}
 
 
 

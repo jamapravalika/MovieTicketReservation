@@ -36,10 +36,16 @@ public class MovieServlet extends HttpServlet {
     	    List<Movie> movies = movieDao.getAllMovies();
     	   
     	    request.setAttribute("movies", movies);
-    	    RequestDispatcher dispatcher = request.getRequestDispatcher("MoviesPage1.jsp");
+		/*
+		 * RequestDispatcher dispatcher =
+		 * request.getRequestDispatcher("MoviesPage1.jsp");
+		 */
+    	    RequestDispatcher dispatcher = request.getRequestDispatcher("moviepage.jsp");
     	    dispatcher.forward(request, response);
-    	    RequestDispatcher dispatcher1 = request.getRequestDispatcher("dmovie.jsp");
-    	    dispatcher1.forward(request, response);
+		/*
+		 * RequestDispatcher dispatcher1 = request.getRequestDispatcher("dmovie.jsp");
+		 * dispatcher1.forward(request, response);
+		 */
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

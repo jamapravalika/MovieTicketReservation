@@ -33,6 +33,20 @@
  	<servlet-name>SeatServlet</servlet-name>
  	<servlet-class>com.Servlets.SeatServlet</servlet-class>
  </servlet>
+ <servlet>
+ 	<description>
+ 	</description>
+ 	<display-name>ShowTimingsServlet</display-name>
+ 	<servlet-name>ShowTimingsServlet</servlet-name>
+ 	<servlet-class>com.Servlets.ShowTimingsServlet</servlet-class>
+ </servlet>
+ <servlet>
+ 	<description>
+ 	</description>
+ 	<display-name>TheaterServlet</display-name>
+ 	<servlet-name>TheaterServlet</servlet-name>
+ 	<servlet-class>com.Servlets.TheaterServlet</servlet-class>
+ </servlet>
 
     
     <servlet-mapping>
@@ -42,6 +56,14 @@
     <servlet-mapping>
     	<servlet-name>SeatServlet</servlet-name>
     	<url-pattern>/show</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>ShowTimingsServlet</servlet-name>
+    	<url-pattern>/ShowTimingsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>TheaterServlet</servlet-name>
+    	<url-pattern>/TheaterServlet</url-pattern>
     </servlet-mapping>
     
 

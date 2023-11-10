@@ -105,7 +105,7 @@
                      <div class="card-body">
                          <h4 class="card-title"><%= movie.getMovie_Name() %></h4>
                          <p class="card-text"><%= movie.getGenre() %></p>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= movie.getMovie_Id() %>">DETAILS</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= movie.getMovie_Id() %>">Movie Details</button>
         			</div>
    				 </div>
 
