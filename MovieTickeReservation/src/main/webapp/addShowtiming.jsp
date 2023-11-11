@@ -28,45 +28,39 @@
         </br>
             <!-- Add Movie Form -->
 
-<form enctype="multipart/form-data" action="ShowTimeServlet" method="post">
+	<form enctype="multipart/form-data" action="AddShowServlet" method="post">
+    	<input type="hidden" name="action" value="insert">
 
-<form enctype="multipart/form-data" action="ShowServlet" method="post">
+    	<!-- Existing fields -->
 
-    <!-- Existing fields -->
-    
-    <div class="form-group">
+    	<div class="form-group">
+        	<label for="movieName">Movie Name</label>
+        	<input type="text" class="form-control" id="movieName" name="Movie_Name" required>
+    	</div>
 
-        <label for="movieName">Movie Name</label>
-        <input type="text" class="form-control" id="movieName" name="movieName" required>
-        <label for="moviename">Movie name</label>
-        <input type="number" class="form-control" id="movieId" name="movieId" required>
-    </div>
-    
+    	<div class="for">
+        	<div class="form-group">
+            	<label for="startTime">Start Time</label>
+            	<input type="time" class="form-control" id="startTime" name="Start_Time" required>
+        	</div>
+        	<div class="form-group">
+            <label for="endTime">End Time:</label>
+            <input type="time" class="form-control" id="endTime" name="End_Time" required>
+        	</div>
+    	</div>
+    	<div class="form-group">
+        	<label for="casts">Theater Id:</label>
+        	<input type="number" class="form-control" id="casts" name="theater_id" required>
+    	</div>
 
-    <div class="for">
-    <div class="form-group">
-        <label for="startTime">startTime</label>
-        <input type="time" class="form-control" id="releasedate" name="startTime" required>
-    </div>
-    <div class="form-group">
-        <label for="endtime">endTime:</label>
-        <input type="time" class="form-control" id="director" name="endTime" required>
-    </div>
-    </div>
-    <div class="form-group">
-        <label for="theaterId">Theater Id:</label>
-        <input type="number" class="form-control" id="casts" name="casts" required>
-    </div>
-    
- 
-    <div class="buttons">
-        <br>
-        <button type="submit" class="btn btn-primary">Add Show Times</button>
-    </div>
-</form>
+    	<div class="buttons">
+        	<br>
+        	<button type="submit" class="btn btn-primary">Add Show Times</button>
+    	</div>
+	</form>
 
-</div>
-</a>
+	</div>
+	</a>
     
 </section>
     
