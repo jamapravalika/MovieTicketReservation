@@ -4,17 +4,20 @@ public class Theater {
 	private int Theater_Id;
 	private String Theater_Name;
 	private String Address;
-	private String Capacity;
+	private int Capacity;
 	
 	public Theater() {
 		super();
 	}
-	public Theater(int theater_Id, String theater_Name, String address, String capacity) {
+	public Theater(int theater_Id, String theater_Name, String address, int capacity) {
 		super();
 		Theater_Id = theater_Id;
 		Theater_Name = theater_Name;
 		Address = address;
 		Capacity = capacity;
+	}
+	public Theater(String theatername, String location, int capacity) {
+		// TODO Auto-generated constructor stub
 	}
 	public int getTheater_Id() {
 		return Theater_Id;
@@ -34,10 +37,10 @@ public class Theater {
 	public void setAddress(String address) {
 		Address = address;
 	}
-	public String getCapacity() {
+	public int getCapacity() {
 		return Capacity;
 	}
-	public void setCapacity(String capacity) {
+	public void setCapacity(int capacity) {
 		Capacity = capacity;
 	}
 	@Override
@@ -47,3 +50,4 @@ public class Theater {
 	}
 	
 }
+	
