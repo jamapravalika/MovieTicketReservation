@@ -1,6 +1,8 @@
 package com.Dao;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +21,7 @@ public class MovieDao implements MoviesDaoIntrfc{
 	private static final String Delete_QUERY="DELETE FROM movies WHERE MovieId = ?";
 	Connection con=DbConnection.getConnection();
 	public List<Movie> getAllMovies() {
-		// TODO Auto-generated method stub
+		
 		 List<Movie> movList = new ArrayList<Movie>();
 	        try {
 	        	
@@ -57,7 +59,7 @@ public class MovieDao implements MoviesDaoIntrfc{
 	        return movList;
 	    }
 	public void InsertMovies(Movie mov) {
-		// TODO Auto-generated method stub
+	
 		try {
 			PreparedStatement pstmt = con.prepareStatement(Insert_QUERY);
 			
@@ -85,7 +87,7 @@ public class MovieDao implements MoviesDaoIntrfc{
 
 	}
 	public void UpadateMovies(Movie mov) {
-		// TODO Auto-generated method stub
+		
 		try {
 			  mov = new Movie();
 	            PreparedStatement pstmt = con.prepareStatement(Update_QUERY);
@@ -110,20 +112,34 @@ public class MovieDao implements MoviesDaoIntrfc{
 	        } 
 		
 	}
+
+	/*
+	 * public void DeleteMovies(Movie mov) {
+	 * 
+	 * try { mov = new Movie(); PreparedStatement pstmt =
+	 * con.prepareStatement(Delete_QUERY); pstmt.setInt(1,mov.getMovie_Id());
+	 * pstmt.executeUpdate();
+	 * 
+	 * } catch (SQLException e) { e.printStackTrace(); }
+	 * }
+	 */
+	
+	public void DeleteMovies(int movieId) {
+	    try {
+	        PreparedStatement pstmt = con.prepareStatement(Delete_QUERY);
+	        pstmt.setInt(1, movieId);
+	        pstmt.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	public Movie getMovieById(int movieId) {
+	
+		return null;
+	}
+	@Override
 	public void DeleteMovies(Movie mov) {
 		// TODO Auto-generated method stub
-		try {
-			 mov = new Movie();
-			PreparedStatement pstmt = con.prepareStatement(Delete_QUERY);
-			pstmt.setInt(1,mov.getMovie_Id());
-			pstmt.executeUpdate();
-			
-		}
-		catch (SQLException e) {
-           e.printStackTrace();
+		
 	}
 	}
-
-	
-	
-}
