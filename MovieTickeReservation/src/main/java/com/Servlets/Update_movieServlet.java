@@ -1,8 +1,10 @@
 package com.Servlets;   
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,36 +24,61 @@ public class Update_movieServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Display the list of movies for editing or deleting
+        // movie display for edit and delete
         MovieDao movieDao = new MovieDao();
         List<Movie> movies = movieDao.getAllMovies();
         request.setAttribute("movies", movies);
         RequestDispatcher dispatcher = request.getRequestDispatcher("EditMovie.jsp");
         dispatcher.forward(request, response);
     }
-
+//using dopost for updating and deleting
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Handle the update or delete operation here
-        // You should get the parameters from the request and perform the respective operation
+       
+        
 
-        String action = request.getParameter("action"); // For example, you can have a hidden input in your form to specify the action (update or delete)
+        String action = request.getParameter("action"); 
 
         if ("update".equals(action)) {
-            // Handle movie update
+           
             int movieId = Integer.parseInt(request.getParameter("movieId"));
-            // Retrieve the updated movie information from the request and update it in the database
-            // MovieDao.updateMovie(movieId, updatedMovie);
+            
+            
+                MovieDao movieDao = new MovieDao();
+                Movie existingMovie = movieDao.getMovieById(movieId);
 
-        } else if ("delete".equals(action)) {
-            // Handle movie delete
+                existingMovie.setMovie_Name(request.getParameter("movieName"));
+                existingMovie.setMovie_Director(request.getParameter("director"));
+                String releaseDateStr = request.getParameter("movie_Release_Date");
+                try {
+                java.util.Date releaseDate = new SimpleDateFormat("yyyy-MM-dd").parse(releaseDateStr);
+                existingMovie.setMovie_Release_Date(new Date(releaseDate.getTime()));
+                } catch (ParseException e)
+                {
+                    e.printStackTrace(); 
+                }
+                existingMovie.setMovie_Casts(request.getParameter("movie_Casts"));
+                existingMovie.setMovie_Description(request.getParameter("movie_Description"));
+                existingMovie.setMovie_Poster(request.getParameter("movie_Poster"));
+                existingMovie.setMovie_Duration(request.getParameter("movie_Duration"));
+                existingMovie.setTrailerlink(request.getParameter("trailerlink"));
+                existingMovie.setGenre(request.getParameter("genre"));
+
+                // Now, update the movie in the db
+                movieDao.UpadateMovies(existingMovie);
+            }
+        else if ("delete".equals(action)) {
             int movieId = Integer.parseInt(request.getParameter("movieId"));
-            // Delete the movie from the database
-            // MovieDao.deleteMovie(movieId);
+            MovieDao movieDao = new MovieDao();
+            movieDao.DeleteMovies(movieId);
         }
-
-        // After performing the update or delete operation, you may want to redirect to the list of movies for editing
+        // redirect to movies
+    try {
         response.sendRedirect(request.getContextPath() + "/Update_movieServlet");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 
-        // You can also add error handling, validation, and database interaction as needed.
+
+    
     }
 }
