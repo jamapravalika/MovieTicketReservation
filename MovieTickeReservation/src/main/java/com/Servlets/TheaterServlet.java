@@ -1,6 +1,8 @@
 package com.Servlets;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,101 +14,125 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Dao.TheaterDao;
+import com.Db.DbConnection;
 import com.Model.Theater;
-
-/**
- * Servlet implementation class TheaterServlet
- */
 
 public class TheaterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TheaterServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private static final String Select_QUERY = "Select * from movies";
+	private static final String Insert_QUERY = "INSERT INTO Theater (theaterName, address, capacity) VALUES (?, ?, ?)"; 
+	private static final String Delete_QUERY = "DELETE FROM Theater WHERE theaterId = ?";
+	private static final String updateSql = "UPDATE theaters SET TheatrName = ?, address = ? WHERE theaterId = ?";
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	Connection con = DbConnection.getConnection();
+
+	Theater thea = new Theater();
+
+	public TheaterServlet() {
+		super();
 	}
 
-	
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		 System.out.println("in post");
-		//System.out.println("hello");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		/*
-		 * String action = request.getServletPath();
-		 * 
-		 * switch(action){ case "/insert": try { inserttheater(request,response); }
-		 * catch (SQLException e) { e.printStackTrace(); } break; case "/delete": try {
-		 * deletetheater(request,response); } catch (SQLException e) {
-		 * e.printStackTrace(); }
-		 * 
-		 * break; case "/edit": try { showedittheater(request,response); } catch
-		 * (SQLException e) { e.printStackTrace(); } break; case "/display": try {
-		 * displaytheater(request,response); } catch (SQLException e) {
-		 * e.printStackTrace(); } break; default: try { listtheater(request,response); }
-		 * catch (SQLException e) { e.printStackTrace(); }
+		 * String action = request.getParameter("action");
 		 * 
 		 * 
-		 * }
+		 * if (action != null) { switch (action) { case "update": updateTheater(request,
+		 * response); break; case "delete": deleteTheater(request, response); break;
+		 * default: // Handle other cases if needed break; } } else { // Handle the case
+		 * where action is null // You might want to redirect to an error page or handle
+		 * it appropriately }
+		 * 
 		 */
+		  
+		/*
+		 * String theaterName = request.getParameter("theaterName"); String
+		 * theaterLocation = request.getParameter("theaterLocation"); int
+		 * seatingCapacity = Integer.parseInt(request.getParameter("seatingCapacity"));
+		 */
+		  
+		  
+		  
+		  TheaterDao theaterDao = new TheaterDao(); 
+		  List<Theater> thea = theaterDao.displayTheaterdetails();
+		  request.setAttribute("theaters", thea);
+		  RequestDispatcher dispatcher = request.getRequestDispatcher("viewTheater.jsp");
+		  dispatcher.forward(request, response);
+
 	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		
-	
-	
-	 private void listtheater(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{	
+		PreparedStatement pstmt = null;
+	    Connection con = null;
+
 		/*
-		 * List<Theater>listTheater = theaterDao.selectAllTheater();
-		 * request.setAttribute(ListTheater, listtheater()); RequestDispatcher
-		 * dispatcher = request.getRequestDispatcher("theater.jsp");
-		 * dispatcher.forward(request, response); }
+		 * String action = request.getParameter("action");
 		 * 
-		 * private void showedittheater(HttpServletRequest request, HttpServletResponse
-		 * response) throws ServletException,IOException{ int id =
-		 * Integer.parseInt(request.getParameter("id")); Theater existingTheater =
-		 * comDao.selectTheater(id); RequestDispatcher dispatcher =
-		 * request.getRequestDispatcher("theater.jsp"); request.setAttribute(theater,
-		 * existingtheater); dispatcher.forward(request, response); }
-		 * 
-		 * private void deletetheater(HttpServletRequest request, HttpServletResponse
-		 * response) throws ServletException,IOException{ int id =
-		 * Integer.parseInt(request.getParameter("id")); comDao.deleteUser(id);
-		 * response.sendRedirect(list); }
-		 * 
-		 * private void display(HttpServletRequest request, HttpServletResponse
-		 * response) throws ServletException,IOException{ RequestDispatcher dispatcher =
-		 * request.getRequestDispatcher("theater.jsp"); request.getAttribute("theater",
-		 * existingUser); dispatcher.forward(request, response); }
-		 * 
-		 * private void inserttheater(HttpServletRequest request, HttpServletResponse
-		 * response) throws ServletException,IOException{
-		 * 
-		 * String theatername = request.getParameter("theatername"); String location =
-		 * request.getParameter("location"); int capacity =
-		 * Integer.parseInt(request.getParameter("capacity")); Theater newTheater = new
-		 * Theater(theatername,location,capacity); TheaterDao.inserttheater(new
-		 * Theater);
-		 * 
-		 * response.sendRedirect("list");
+		 * switch (action) { case "update": updateTheater(request, response); break;
+		 * case "delete": deleteTheater(request, response); break; default: // Handle
+		 * other cases if needed break; }
 		 */
-		 
-		
-		
-	}}
-		
+System.out.println("in post");
+		/*
+		 * private void updateTheater(HttpServletRequest request, HttpServletResponse
+		 * response) throws ServletException, IOException { // Extract parameters from
+		 * the form int theaterId = Integer.parseInt(request.getParameter("theaterId"));
+		 * String theaterName = request.getParameter("theaterName"); String
+		 * theaterLocation = request.getParameter("theaterLocation"); int
+		 * seatingCapacity = Integer.parseInt(request.getParameter("seatingCapacity"));
+		 * 
+		 * TheaterDao theaterDao = new TheaterDao(); Theater theater = new
+		 * Theater(theaterId, theaterName, theaterLocation, seatingCapacity);
+		 * theaterDao.editTheater(theater);
+		 * 
+		 * response.sendRedirect("theater.jsp"); }
+		 * 
+		 * private void deleteTheater(HttpServletRequest request, HttpServletResponse
+		 * response) throws ServletException, IOException { int theaterId =
+		 * Integer.parseInt(request.getParameter("theaterId"));
+		 * 
+		 * TheaterDao theaterDao = new TheaterDao();
+		 * theaterDao.removeTheater(theaterId);
+		 * 
+		 * response.sendRedirect("theater.jsp"); }
+		 * 
+		 * private void addTheater(HttpServletRequest request, HttpServletResponse
+		 * response) throws ServletException, IOException {
+		 */
+		try {
+			con = DbConnection.getConnection();
+			String tName = request.getParameter("theaterName");
+			String TLocation = request.getParameter("theaterLocation");
+			int capacity = Integer.parseInt(request.getParameter("seatingCapacity"));
 
+			String insertQuery = "INSERT INTO Theater (theatrName, address, capacity) VALUES (?, ?, ?)";
+			pstmt = con.prepareStatement(insertQuery);
 
+			pstmt.setString(1, tName);
+			pstmt.setString(2, TLocation);
+			pstmt.setInt(3, capacity);
+
+			pstmt.executeUpdate();
+
+            con.commit();
+
+		 } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            try {
+	                if (pstmt != null) {
+	                    pstmt.close();
+	                }
+	                if (con != null) {
+	                    con.close();
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+		}
+	
+}

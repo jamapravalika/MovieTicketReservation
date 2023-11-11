@@ -57,9 +57,15 @@
  <servlet>
  	<description>
  	</description>
+<<<<<<< HEAD
  	<display-name>ShowTimeServlet</display-name>
  	<servlet-name>ShowTimeServlet</servlet-name>
  	<servlet-class>com.Servlets.ShowTimeServlet</servlet-class>
+=======
+ 	<display-name>ShowServlet</display-name>
+ 	<servlet-name>ShowServlet</servlet-name>
+ 	<servlet-class>com.Servlets.ShowServlet</servlet-class>
+>>>>>>> branch 'main' of https://github.com/jamapravalika/MovieTicketReservation.git
  </servlet>
 
     
@@ -84,8 +90,16 @@
     	<url-pattern>/Search</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
     	<servlet-name>ShowTimeServlet</servlet-name>
     	<url-pattern>/ShowTimeServlet</url-pattern>
     </servlet-mapping>
+=======
+    	<servlet-name>ShowServlet</servlet-name>
+    	<url-pattern>/ShowServlet</url-pattern>
+    </servlet-mapping>
+    
+
+>>>>>>> branch 'main' of https://github.com/jamapravalika/MovieTicketReservation.git
     
 </web-app>

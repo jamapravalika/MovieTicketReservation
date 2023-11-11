@@ -45,7 +45,7 @@
         <li><a href="/MovieTickeReservation/dmovie"><i class="fa fa-film"></i> View Movies</a></li>
         <li><a href="UserTable.jsp"><i class="fa fa-users"></i> Users</a></li>
         <li><a href="theater.jsp"><i class="fa fa-building"></i> Theaters</a></li>
-        <li><a href="showtimings.jsp"><i class="fa fa-building"></i> Show Timings</a></li>
+        <li><a href="addShowtiming.jsp"><i class="fa fa-building"></i> Show Timings</a></li>
         <li><a href="seat.jsp"><i class="fa fa-building"></i> Seats</a></li>
       </ul>
     </nav>

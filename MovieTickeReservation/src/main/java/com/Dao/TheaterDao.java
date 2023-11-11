@@ -10,13 +10,14 @@
 	import java.util.List;
 
 	import com.Db.DbConnection;
+import com.Model.Movie;
 import com.Model.ShowTimes;
 import com.Model.Theater;
 
 
 	public class TheaterDao implements TheaterDaoIntrf {
-		private static final String Select_QUERY = "Select * from movies";
-		private static final String Insert_QUERY = "Insert into movies (movieId,theaterId,movie_name,director,releasedate,casts,description,poster,duration,trailerlink,genre) values(?,?,?,?,?,?,?,?,?,?,?)";
+		private static final String  Select_QUERY= "Select * from Theater";
+		private static final String Insert_QUERY = "Insert into Theater (TheatrName,address,capacity) values(?,?,?)";
 	
 		private static final String Delete_QUERY ="DELETE FROM Theater WHERE theaterId = ?";
 		private static final String updateSql = "UPDATE theaters SET theater_name = ?, location = ? WHERE theater_id = ?";
@@ -51,7 +52,7 @@ import com.Model.Theater;
 		}
 
 		@Override
-		public void editTheater() {
+		public void editTheater(Theater theater) {
 			// TODO Auto-generated method stub
 			try  {
 	            // Create the SQL update statement
@@ -79,54 +80,52 @@ import com.Model.Theater;
 
 		@Override
 		public void removeTheater(int id) {
-			// TODO Auto-generated method stub
-			 try {
-		            thea=new Theater();
-					PreparedStatement pstmt = con.prepareStatement(Delete_QUERY);
-		            pstmt.setBoolean(1, true);
-		            pstmt.setInt(2, thea.getTheater_Id());
-
-		            pstmt.executeUpdate();
-		          
-		            return false;
-		        } catch (SQLException e) {
-		            e.printStackTrace();
-		        } finally {
-		            System.out.println("Finally Block");
-		        }
-				return false;
-			}
-			
-		
-
-		@Override
-		public List<ShowTimes> displayTheaterdetails() {
-			// TODO Auto-generated method stub
-			try {
-	            Connection conn = null;
-				Statement stmt = conn.createStatement();
-	            String QUERY = null;
-				ResultSet result = stmt.executeQuery(QUERY);
-	            List<Theater> theater = new ArrayList<>();
-
-	            while (result.next()) {
-	                Theater theater1 = new Theater();
-	                theater1.setTheater_Id(result.getInt(1));
-	                theater1.setTheater_Name(result.getString(2));
-	                theater1.setAddress(result.getString(3));
-	                theater1.setCapacity(result.getInt(4));
-					theater.add(theater1);
+			Connection conn = DbConnection.getConnection();
+	        try {
+	        	thea=new Theater();
+	            PreparedStatement pstm = conn.prepareStatement(Delete_QUERY);
+	            pstm.setInt(1, thea.getTheater_Id());
+	            int cnt = pstm.executeUpdate();
+	            if (cnt != 0) {
+	                System.out.println("Deleted Successfully!!! " + thea.getTheater_Id());
 	            }
-
-	            //request.setAttribute("bookings", bookings); // Set the bookings as a request attribute
-	        } catch (Exception e) {
+	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        } finally {
 	            System.out.println("Finally Block");
 	        }
-		}
 			
 		}
+		@Override
+		public List<Theater> displayTheaterdetails() {
+		    List<Theater> theater = new ArrayList<Theater>();
+
+		    try {
+		    	Connection conn = DbConnection.getConnection();
+		        Statement stmt = conn.createStatement();
+
+		        ResultSet result = stmt.executeQuery(Select_QUERY);
+
+		        while (result.next()) {
+		            Theater the = new Theater();
+		            the.setTheater_Id(result.getInt(1)); 
+		            the.setTheater_Name(result.getString(2));
+		            the.setAddress(result.getString(3));
+		            the.setCapacity(result.getInt(4)); 
+
+		            theater.add(the);
+		        }
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    } finally {
+		        System.out.println("Finally Block");
+		    }
+
+		    return theater;
+		}
+
+
+	}
 
 
 
