@@ -55,8 +55,5 @@ public class ShowTimes {
 	public String toString() {
 		return "ShowTimes [Showtime_Id=" + Showtime_Id + ", movie_name=" + movie_name + ", Start_Time=" + Start_Time
 				+ ", End_Time=" + End_Time + ", theater_id=" + theater_id + "]";
-	} 
-	
-	
-	
+	} 	
 }

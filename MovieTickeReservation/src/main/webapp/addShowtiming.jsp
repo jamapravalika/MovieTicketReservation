@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Show Timing</title>
 <link rel="stylesheet" type="text/css" href="AddMovies.css">
 </head>
 <body>
@@ -27,12 +27,12 @@
             <br>
         </br>
             <!-- Add Movie Form -->
-<form enctype="multipart/form-data" action="Hello" method="post">
+<form enctype="multipart/form-data" action="ShowTimeServlet" method="post">
     <!-- Existing fields -->
     
     <div class="form-group">
-        <label for="movieId">Movie Id</label>
-        <input type="number" class="form-control" id="movieId" name="movieId" required>
+        <label for="movieName">Movie Name</label>
+        <input type="text" class="form-control" id="movieName" name="movieName" required>
     </div>
     
 

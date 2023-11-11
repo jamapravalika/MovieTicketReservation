@@ -54,6 +54,13 @@
  	<servlet-name>Search</servlet-name>
  	<servlet-class>com.Servlets.Search</servlet-class>
  </servlet>
+ <servlet>
+ 	<description>
+ 	</description>
+ 	<display-name>ShowTimeServlet</display-name>
+ 	<servlet-name>ShowTimeServlet</servlet-name>
+ 	<servlet-class>com.Servlets.ShowTimeServlet</servlet-class>
+ </servlet>
 
     
     <servlet-mapping>
@@ -76,7 +83,9 @@
     	<servlet-name>Search</servlet-name>
     	<url-pattern>/Search</url-pattern>
     </servlet-mapping>
-    
-
+    <servlet-mapping>
+    	<servlet-name>ShowTimeServlet</servlet-name>
+    	<url-pattern>/ShowTimeServlet</url-pattern>
+    </servlet-mapping>
     
 </web-app>

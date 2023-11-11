@@ -10,7 +10,7 @@ public interface ShowTimingIntrf {
 	
 	public void UpdateShowTime();
 	
-	public void DeleteShowTime(ShowTimes show2);
+	public void DeleteShowTime();
 	
 	public List<ShowTimes> ListAllShowTime();
 	
