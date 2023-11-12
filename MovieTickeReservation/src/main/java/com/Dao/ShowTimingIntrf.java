@@ -6,11 +6,11 @@ import com.Model.ShowTimes;
 
 public interface ShowTimingIntrf {
 	
-	public void InsertShowTime();
+	public void InsertShowTime(ShowTimes showtime);
 	
-	public void UpdateShowTime();
+	public void UpdateShowTime(ShowTimes showtime);
 	
-	public void DeleteShowTime();
+	public void DeleteShowTime(int showtimeId);
 	
 	public List<ShowTimes> ListAllShowTime();
 	

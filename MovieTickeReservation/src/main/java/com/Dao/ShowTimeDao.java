@@ -19,21 +19,20 @@ public class ShowTimeDao implements ShowTimingIntrf{
 	Connection con=DbConnection.getConnection();
 
 	@Override
-	public void InsertShowTime() {
+	public void InsertShowTime(ShowTimes showtime) {
 		// TODO Auto-generated method stub
 		
 		final String Insert_QUERY = "INSERT INTO Showtimes (movie_name, start_time, end_time, theater_Id)" + 
 				"VALUES (?,?,?,?);";
 		
-		 try { 
-			 	ShowTimes Show = new ShowTimes(); 
-		        PreparedStatement statement = con.prepareStatement(Insert_QUERY);
-		        statement.setString(1,Show.getMovie_name().getMovie_Name());
-		        statement.setTime(2,Show.getStart_Time());
-		        statement.setTime(3, Show.getEnd_Time());
-		        statement.setInt(4,Show.getTheater_id().getTheater_Id());
-		        statement.executeUpdate();
-		    }
+		try {
+            PreparedStatement statement = con.prepareStatement(Insert_QUERY);
+            statement.setString(1, showtime.getMovie_name().getMovie_Name());
+            statement.setTime(2, showtime.getStart_Time());
+            statement.setTime(3, showtime.getEnd_Time());
+            statement.setInt(4, showtime.getTheater_id().getTheater_Id());
+            statement.executeUpdate();
+		}
 		catch (Exception e) {
 			System.out.println("Exception" + e.getLocalizedMessage());
 		}
@@ -44,19 +43,20 @@ public class ShowTimeDao implements ShowTimingIntrf{
 	}
 	
 	@Override
-	public void UpdateShowTime() {
+	public void UpdateShowTime(ShowTimes showtime) {
 		// TODO Auto-generated method stub
 		
-		final String update_Query = "UPDATE Showtimes SET movie_name = ? start_time = ?, end_time = ?, theater_Id = ? WHERE showtime_Id = ?";
+		final String update_Query = "UPDATE Showtimes SET movie_name = ?, start_time = ?, end_time = ?, theater_Id = ? WHERE showtime_Id = ?";
 
-		 try { 
-		 ShowTimes Show = new ShowTimes(); 
-	        PreparedStatement statement = con.prepareStatement(update_Query);
-	        statement.setString(1,Show.getMovie_name().getMovie_Name());
-	        statement.setTime(2,Show.getStart_Time());
-	        statement.setTime(3, Show.getEnd_Time());
-	        statement.setInt(4,Show.getTheater_id().getTheater_Id());
-	        statement.executeUpdate();
+
+		try {
+            PreparedStatement statement = con.prepareStatement(update_Query);
+            statement.setString(1, showtime.getMovie_name().getMovie_Name());
+            statement.setTime(2, showtime.getStart_Time());
+            statement.setTime(3, showtime.getEnd_Time());
+            statement.setInt(4, showtime.getTheater_id().getTheater_Id());
+            statement.setInt(5, showtime.getShowtime_Id());
+            statement.executeUpdate();
 	    }
 		  catch (SQLException e) {
 	            e.printStackTrace();
@@ -102,15 +102,14 @@ public class ShowTimeDao implements ShowTimingIntrf{
 	}
 	
 	@Override
-	public void DeleteShowTime() {
+	public void DeleteShowTime(int showtimeId) {
 		// TODO Auto-generated method stub
-		final String Delete_Query ="DELETE FROM Showtimes WHERE showtimeId = ?";
+		final String Delete_Query ="DELETE FROM Showtimes WHERE showtime_Id = ?";
 		
 		try {
-			ShowTimes Show = new ShowTimes();
-			PreparedStatement pstmt = con.prepareStatement(Delete_Query);
-			pstmt.setInt(1,Show.getShowtime_Id());
-			pstmt.executeUpdate();
+            PreparedStatement pstmt = con.prepareStatement(Delete_Query);
+            pstmt.setInt(1, showtimeId);
+            pstmt.executeUpdate();
 		}
 		catch (SQLException e) {
             e.printStackTrace();

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.Dao.ShowTimeDao;
 import com.Model.ShowTimes;
 
+
 /**
  * Servlet implementation class ShowServlet
  */
@@ -32,6 +33,7 @@ public class ShowServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+<<<<<<< HEAD
 		listAllShowTime(request, response);
 	}
 
@@ -44,6 +46,13 @@ public class ShowServlet extends HttpServlet {
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("ShowTime.jsp");
         dispatcher.forward(request, response);
+=======
+		ShowTimeDao showTimeDao = new ShowTimeDao(); 
+		List<ShowTimes> show = showTimeDao.ListAllShowTime();
+		request.setAttribute("showList", show);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ShowTime.jsp");
+		dispatcher.forward(request, response);
+>>>>>>> branch 'main' of https://github.com/jamapravalika/MovieTicketReservation.git
 	}
 
 	/**
@@ -51,41 +60,6 @@ public class ShowServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String action = request.getParameter("action");
-
-        switch (action) {
-            case "insert":
-                insertShowTime(request, response);
-                break;
-            case "update":
-                updateShowTime(request, response);
-                break;
-            case "delete":
-                deleteShowTime(request, response);
-                break;
-            default:
-                break;
-        }
-        response.sendRedirect("ShowTime.jsp");
-    }
-	
-	private void insertShowTime(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		ShowTimeDao showTimeDao = new ShowTimeDao();
-        showTimeDao.InsertShowTime();
+		doGet(request, response);
 	}
-
-	private void updateShowTime(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		ShowTimeDao showTimeDao = new ShowTimeDao();
-        showTimeDao.UpdateShowTime();
-	}
-
-	private void deleteShowTime(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
-		ShowTimeDao showTimeDao = new ShowTimeDao();
-        showTimeDao.DeleteShowTime();
-        response.sendRedirect("ShowTime.jsp");
-	}
-
 }

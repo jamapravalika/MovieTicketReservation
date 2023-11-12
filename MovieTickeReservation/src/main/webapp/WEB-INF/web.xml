@@ -67,6 +67,34 @@
  	<servlet-class>com.Servlets.ShowServlet</servlet-class>
 
  </servlet>
+ 	<servlet>
+ 		<description>
+ 		</description>
+ 		<display-name>AddShowServlet</display-name>
+ 		<servlet-name>AddShowServlet</servlet-name>
+ 		<servlet-class>com.Servlets.AddShowServlet</servlet-class>
+ 	</servlet>
+ 	<servlet>
+ 		<description>
+ 		</description>
+ 		<display-name>UpdateShowServlet</display-name>
+ 		<servlet-name>UpdateShowServlet</servlet-name>
+ 		<servlet-class>com.Servlets.UpdateShowServlet</servlet-class>
+ 	</servlet>
+ 	<servlet>
+ 		<description>
+ 		</description>
+ 		<display-name>EditShowServlet</display-name>
+ 		<servlet-name>EditShowServlet</servlet-name>
+ 		<servlet-class>com.Servlets.EditShowServlet</servlet-class>
+ 	</servlet>
+ 	<servlet>
+ 		<description>
+ 		</description>
+ 		<display-name>RemoveShowServlet</display-name>
+ 		<servlet-name>RemoveShowServlet</servlet-name>
+ 		<servlet-class>com.Servlets.RemoveShowServlet</servlet-class>
+ 	</servlet>
 
     
     <servlet-mapping>
@@ -97,5 +125,21 @@
     	<servlet-name>ShowServlet</servlet-name>
     	<url-pattern>/ShowServlet</url-pattern>
     </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddShowServlet</servlet-name>
+		<url-pattern>/AddShowServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateShowServlet</servlet-name>
+		<url-pattern>/UpdateShowServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EditShowServlet</servlet-name>
+		<url-pattern>/EditShowServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RemoveShowServlet</servlet-name>
+		<url-pattern>/RemoveShowServlet</url-pattern>
+	</servlet-mapping>
     
 </web-app>

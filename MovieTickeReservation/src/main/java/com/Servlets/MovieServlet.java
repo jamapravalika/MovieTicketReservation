@@ -43,9 +43,14 @@ public class MovieServlet extends HttpServlet {
     	    RequestDispatcher dispatcher = request.getRequestDispatcher("MoviesPage1.jsp");
     	    dispatcher.forward(request, response);
 		
+<<<<<<< HEAD
 		  RequestDispatcher dispatcher1 = request.getRequestDispatcher("dmovie.jsp");
 		  dispatcher1.forward(request, response);
 		 
+=======
+		 RequestDispatcher dispatcher1 = request.getRequestDispatcher("dmovie.jsp");
+		 dispatcher1.forward(request, response);
+>>>>>>> branch 'main' of https://github.com/jamapravalika/MovieTicketReservation.git
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
