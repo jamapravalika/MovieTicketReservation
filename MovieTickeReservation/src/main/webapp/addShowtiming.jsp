@@ -28,7 +28,7 @@
         </br>
             <!-- Add Movie Form -->
 
-<form enctype="multipart/form-data" action="ShowTimeServlet" method="post">
+<form enctype="multipart/form-data" action="ShowServlet" method="post">
 
 <form enctype="multipart/form-data" action="ShowServlet" method="post">
 

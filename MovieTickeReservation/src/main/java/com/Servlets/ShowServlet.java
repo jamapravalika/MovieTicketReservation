@@ -36,11 +36,10 @@ public class ShowServlet extends HttpServlet {
 	}
 
 	private void listAllShowTime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		ShowTimeDao showTimeDao = new ShowTimeDao();
         List<ShowTimes> show = showTimeDao.ListAllShowTime();
 
-        // Set the list in the request attribute
         request.setAttribute("showList", show);
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("ShowTime.jsp");

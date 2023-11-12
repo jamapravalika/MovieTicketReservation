@@ -9,7 +9,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  
     <!-- Latest Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   
@@ -33,6 +32,7 @@
 
     <link rel="stylesheet" href="assets/css/movies.css">
     <link rel="stylesheet" href="assets/css/Header.css">
+    
 
     <title>Movies</title>
     <style type="text/css">
@@ -191,14 +191,11 @@ display: inline-block;
   															<input class="quantity" min="0" name="quantity" value="1" type="number">
  	 														<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><!-- <i class="fas fa-plus" style="margin-bottom: 8px; margin-right: 8px;"></i> --></button>
 														</div>
-
-                                                       <br>
-                                                       
+													 <br>   
                                                    </div>
                                                    <div class="modal-footer">
                                                    <a href="TicketBook.jsp" class="btn btn-primary">Select Seats</a>
-                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                       
+                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>   
                                                    </div>
                                                </div>
                                            </div>

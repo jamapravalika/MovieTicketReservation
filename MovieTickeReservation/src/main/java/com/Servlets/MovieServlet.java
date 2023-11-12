@@ -40,12 +40,12 @@ public class MovieServlet extends HttpServlet {
 		 * RequestDispatcher dispatcher =
 		 * request.getRequestDispatcher("MoviesPage1.jsp");
 		 */
-    	    RequestDispatcher dispatcher = request.getRequestDispatcher("moviepage.jsp");
+    	    RequestDispatcher dispatcher = request.getRequestDispatcher("MoviesPage1.jsp");
     	    dispatcher.forward(request, response);
-		/*
-		 * RequestDispatcher dispatcher1 = request.getRequestDispatcher("dmovie.jsp");
-		 * dispatcher1.forward(request, response);
-		 */
+		
+		  RequestDispatcher dispatcher1 = request.getRequestDispatcher("dmovie.jsp");
+		  dispatcher1.forward(request, response);
+		 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,7 +57,7 @@ public class MovieServlet extends HttpServlet {
         
 	
 		 String uploadPath =
-				 "C:/Users/pssim/git/MovieTicketReservation/MovieTickeReservation/src/main/webapp/images"
+				 "C:/Users/Pravalika/git/MovieTicketReservation/MovieTickeReservation/src/main/webapp/images/"
 		 + imageFileName;
 		 
         
