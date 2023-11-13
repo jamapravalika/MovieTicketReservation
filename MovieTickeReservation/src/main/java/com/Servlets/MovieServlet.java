@@ -18,10 +18,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.Dao.MovieDao;
+import com.Dao.ShowTimeDao;
+import com.Dao.TheaterDao;
 import com.Db.DbConnection;
 import com.Model.Movie;
+import com.Model.ShowTimes;
+import com.Model.Theater;
 
-@WebServlet("/MoviesPage1")
+@WebServlet("/moviepage")
 @MultipartConfig
 public class MovieServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -31,17 +35,21 @@ public class MovieServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	TheaterDao theaterDao = new TheaterDao(); 
+    	List<Theater> thea = theaterDao.displayTheaterdetails();
+		request.setAttribute("theaters", thea);
+    	
+		ShowTimeDao showTimeDao = new ShowTimeDao();
+        List<ShowTimes> show = showTimeDao.ListAllShowTime();
+        request.setAttribute("showList", show);
+    	
+    	
     	 MovieDao movieDao = new MovieDao();
-
-    	    List<Movie> movies = movieDao.getAllMovies();
-    	   
-    	    request.setAttribute("movies", movies);
-		/*
-		 * RequestDispatcher dispatcher =
-		 * request.getRequestDispatcher("MoviesPage1.jsp");
-		 */
-    	    RequestDispatcher dispatcher = request.getRequestDispatcher("MoviesPage1.jsp");
-    	    dispatcher.forward(request, response);
+    	 List<Movie> movies = movieDao.getAllMovies(); 
+    	 request.setAttribute("movies", movies);
+    	 RequestDispatcher dispatcher = request.getRequestDispatcher("moviepage.jsp");
+    	 dispatcher.forward(request, response);
 				 
     }
 

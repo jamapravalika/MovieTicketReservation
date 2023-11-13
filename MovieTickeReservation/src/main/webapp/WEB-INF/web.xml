@@ -95,6 +95,13 @@
  		<servlet-name>RemoveShowServlet</servlet-name>
  		<servlet-class>com.Servlets.RemoveShowServlet</servlet-class>
  	</servlet>
+ 	<servlet>
+ 		<description>
+ 		</description>
+ 		<display-name>TheaterServletU</display-name>
+ 		<servlet-name>TheaterServletU</servlet-name>
+ 		<servlet-class>com.Servlets.TheaterServletU</servlet-class>
+ 	</servlet>
 
     
     <servlet-mapping>
@@ -140,6 +147,10 @@
 	<servlet-mapping>
 		<servlet-name>RemoveShowServlet</servlet-name>
 		<url-pattern>/RemoveShowServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TheaterServletU</servlet-name>
+		<url-pattern>/TheaterServletU</url-pattern>
 	</servlet-mapping>
     
 </web-app>

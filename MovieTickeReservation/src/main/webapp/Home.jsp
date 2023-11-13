@@ -37,7 +37,7 @@
           <a class="nav-link" href="Home.jsp"><i class="fas fa-home"></i> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/MovieTickeReservation/MoviesPage1"><i class="fa-solid fa-video"></i> Movies</a>
+          <a class="nav-link" href="/MovieTickeReservation/moviepage"><i class="fa-solid fa-video"></i> Movies</a>
         </li>
        <!--  <li class="nav-item">
           <a class="nav-link" href="Movies.jsp"><i class="fa-solid fa-video"></i> Movies</a>

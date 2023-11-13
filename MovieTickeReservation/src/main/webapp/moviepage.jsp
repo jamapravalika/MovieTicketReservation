@@ -2,7 +2,10 @@
 <%@ page import="com.Model.Movie" %> 
 <%@ page import="java.util.Base64" %>
 <%@ page import="java.sql.Blob" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.Model.Theater" %> 
 <%@ page import="java.io.InputStream" %>
+<%@ page import="com.Model.ShowTimes" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -50,18 +53,14 @@
 }
 
 
-.def-number-input button {
-  font-size: 20px;
-  width: 26px;
-  height: 33px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
+
 
 .def-number-input button:hover {
   background-color: #f1f1f1;
 } */
+.def-number{
+  aligh-items:"center";
+}
 .btn-primary {
 display: inline-block;
             padding: 10px 70px;
@@ -77,6 +76,75 @@ display: inline-block;
             background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 20.19%, rgba(244, 11, 11, 0.8));
 
         }
+            .timings input:checked + label {
+  background: rgb(285, 115, 115);
+  color: white;
+}
+.timings input:checked + label {
+  background: rgb(285, 115, 115);
+  color: white;
+}
+.timings input:checked + label {
+  background: rgb(285, 115, 115);
+  color: white;
+}
+.theatre {
+  font-size: 14px;
+  /* width: fit-content; */
+  padding: 7px 14px;
+  background: rgb(233, 233, 233);
+  border-radius: 2mm;
+  cursor: pointer;
+}
+ .timings input[type="radio"] {
+        display: none;
+    }
+.timings {
+        width: 100%;
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        /* justify-content: center; */
+        margin-top: 30px;
+      }
+      
+      .theatres {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        /* justify-content: space-between; */
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .theatre {
+        font-size: 14px;
+        padding: 7px 14px;
+        background: rgb(233, 233, 233);
+        border-radius: 2mm;
+        cursor: pointer;
+      }
+      .times {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+      .time {
+        font-size: 14px;
+        width: fit-content;
+        padding: 7px 14px;
+        background: rgb(233, 233, 233);
+        border-radius: 2mm;
+        cursor: pointer;
+      }
+      .timings input:checked + label {
+        background: rgb(285, 115, 115);
+        color: white;
+      }
+      tr{
+  		align-items: center;
+	}
 </style>
 </head>
 <body>
@@ -174,11 +242,11 @@ display: inline-block;
                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nestedModal<%= movie.getMovie_Id() %>">Select Seats</button>
 
                                        <!-- Nested modal -->
-                                       <div class="modal fade" id="nestedModal<%= movie.getMovie_Id() %>" tabindex="-1" role="dialog" aria-labelledby="nestedModalTitle" aria-hidden="true" >
-                                           <div class="modal-dialog" role="document">
+                                       <div class="modal fade bd-example-modal-lg" id="nestedModal<%= movie.getMovie_Id() %>" tabindex="-1" role="dialog" aria-labelledby="nestedModalTitle" aria-hidden="true" >
+                                           <div class="modal-dialog modal-lg" role="document">
                                                <div class="modal-content">
                                                    <div class="modal-header">
-                                                       <h5 class="modal-title" id="nestedModalTitle">Select No. Of Seats</h5>
+                                                       <h5 class="modal-title" id="nestedModalTitle"><%= movie.getMovie_Name() %></h5>
                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                            <span aria-hidden="true">&times;</span>
                                                        </button>
@@ -188,21 +256,60 @@ display: inline-block;
                                                        <h7>Total Seats</h7>
                                                        <br>
                                                        <div class="def-number-input number-input safari_only">
-  															<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"><!-- <i class="fas fa-minus" style="margin-bottom: 8px; margin-right: 8px;"> --></i></button>
+  															<button type="button"  onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
   															<input class="quantity" min="0" name="quantity" value="1" type="number">
- 	 														<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><!-- <i class="fas fa-plus" style="margin-bottom: 8px; margin-right: 8px;"></i> --></button>
+ 	 														<button type="button"  onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
 														</div>
 														
-														
-														
-														
+														<div class="timings">
+														<table>
+														<tr>
+        												<% 
+        												List<Theater> theaters = (List<Theater>) request.getAttribute("theaters");
+        												System.out.println("Theaters: " + theaters);
+        												if (theaters != null) {
+            											for (Theater theater : theaters) { %>
+                											<td>
+                											<div class="theatres">
+                												<input type="text" class="form-control" id="moviename" name="moviename" style="display: none;" value="<%= movie.getMovie_Name() %>">
+
+																<input type="radio" name="theatre_<%= movie.getMovie_Id() %>" id="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>" checked />
+																<label for="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>" class="theatre"><%= theater.getTheater_Name() %></label>
+
+            												</div>
+            												</td>
+            												
+            												<% } 
+        												} %></tr>
+    												<tr>
+    												
+    												<% 
+    												List<ShowTimes> showList = (List<ShowTimes>) request.getAttribute("showList");
+    												if (showList != null && !showList.isEmpty()) { %>
+    												<% for (ShowTimes showtime : showList) { %>
+    												<td>
+    												<div class="times">
+														<input type="radio" name="time_<%= movie.getMovie_Id() %>" id="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>" checked />
+														<label for="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>" class="time"><%= showtime.getStart_Time() %></label></div>	
+													</td>
+													<% } %>
+												<% } else { %>
+    											<tr>
+        											<td colspan="6">No show times available.</td>
+    											</tr>
+    											<% } %>
+													</tr>
+													</table>
+													
+													
+													</div>	
 													</form>	
 														
 													 <br>   
                                                    </div>
                                                    <div class="modal-footer">
                                                    <a href="TicketBook.jsp" class="btn btn-primary">Select Seats</a>
-                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>   
+                                                       <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>   
                                                    </div>
                                                </div>
                                            </div>

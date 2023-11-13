@@ -192,7 +192,18 @@ display: inline-block;
   															<input class="quantity" min="0" name="quantity" value="1" type="number">
  	 														<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><!-- <i class="fas fa-plus" style="margin-bottom: 8px; margin-right: 8px;"></i> --></button>
 														</div>
-														
+														<div class="timings">
+           													<div class="theatres">
+              													<input type="radio" name="theatre" id="th1" checked />
+              													<label for="th1" class="theatre">Theatre 1</label>
+              													<input type="radio" id="th2" name="theatre" />
+              													<label for="th2" class="theatre"> Theatre 2 </label>
+              													<input type="radio" name="theatre" id="th3" />
+              													<label for="th3" class="theatre"> Theatre 3 </label>
+              													<input type="radio" id="th4" name="theatre" />
+              													<label for="th4" class="theatre"> Theatre 4 </label>
+            												</div>
+            											</div>
 														
 														
 														

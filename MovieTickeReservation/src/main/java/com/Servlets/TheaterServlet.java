@@ -59,7 +59,7 @@ public class TheaterServlet extends HttpServlet {
 		  request.setAttribute("theaters", thea);
 		  RequestDispatcher dispatcher = request.getRequestDispatcher("viewTheater.jsp");
 		  dispatcher.forward(request, response);
-
+		  
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
