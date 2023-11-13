@@ -22,23 +22,20 @@ public class ShowTimeDao implements ShowTimingIntrf{
 	public void InsertShowTime(ShowTimes showtime) {
 		// TODO Auto-generated method stub
 		
-		final String Insert_QUERY = "INSERT INTO Showtimes (movie_name, start_time, end_time, theater_Id)" + 
-				"VALUES (?,?,?,?);";
-		
-		try {
-            PreparedStatement statement = con.prepareStatement(Insert_QUERY);
-            statement.setString(1, showtime.getMovie_name().getMovie_Name());
-            statement.setTime(2, showtime.getStart_Time());
-            statement.setTime(3, showtime.getEnd_Time());
-            statement.setInt(4, showtime.getTheater_id().getTheater_Id());
-            statement.executeUpdate();
-		}
-		catch (Exception e) {
-			System.out.println("Exception" + e.getLocalizedMessage());
-		}
-		finally {
-			System.out.println("Finally Block");
-		}
+		try (Connection connection = DbConnection.getConnection()) {
+            String sql = "INSERT INTO ShowTimes (movieName, startTime, endTime, theaterId) VALUES (?, ?, ?, ?);";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, showtime.getMovie_name().getMovie_Name());
+                preparedStatement.setTime(2, showtime.getStart_Time());
+                preparedStatement.setTime(3, showtime.getEnd_Time());
+                preparedStatement.setInt(4, showtime.getTheater_id().getTheater_Id());
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Log the exception or handle it appropriately
+        }
+    
 		
 	}
 	

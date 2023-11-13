@@ -33,33 +33,27 @@ public class ShowServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-<<<<<<< HEAD
-		listAllShowTime(request, response);
-	}
 
-	private void listAllShowTime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 listAllShowTime(request, response);
+    }
 
-		ShowTimeDao showTimeDao = new ShowTimeDao();
+    private void listAllShowTime(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ShowTimeDao showTimeDao = new ShowTimeDao();
         List<ShowTimes> show = showTimeDao.ListAllShowTime();
 
         request.setAttribute("showList", show);
-        
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("ShowTime.jsp");
         dispatcher.forward(request, response);
-=======
-		ShowTimeDao showTimeDao = new ShowTimeDao(); 
-		List<ShowTimes> show = showTimeDao.ListAllShowTime();
-		request.setAttribute("showList", show);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ShowTime.jsp");
-		dispatcher.forward(request, response);
->>>>>>> branch 'main' of https://github.com/jamapravalika/MovieTicketReservation.git
-	}
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 }

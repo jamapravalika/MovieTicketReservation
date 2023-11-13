@@ -28,40 +28,14 @@
         </br>
             <!-- Add Movie Form -->
 
-<<<<<<< HEAD
-<form enctype="multipart/form-data" action="ShowServlet" method="post">
-=======
-	<form enctype="multipart/form-data" action="AddShowServlet" method="post">
-    	<input type="hidden" name="action" value="insert">
->>>>>>> branch 'main' of https://github.com/jamapravalika/MovieTicketReservation.git
-
-    	<!-- Existing fields -->
-
-    	<div class="form-group">
-        	<label for="movieName">Movie Name</label>
-        	<input type="text" class="form-control" id="movieName" name="Movie_Name" required>
-    	</div>
-
-    	<div class="for">
-        	<div class="form-group">
-            	<label for="startTime">Start Time</label>
-            	<input type="time" class="form-control" id="startTime" name="Start_Time" required>
-        	</div>
-        	<div class="form-group">
-            <label for="endTime">End Time:</label>
-            <input type="time" class="form-control" id="endTime" name="End_Time" required>
-        	</div>
-    	</div>
-    	<div class="form-group">
-        	<label for="casts">Theater Id:</label>
-        	<input type="number" class="form-control" id="casts" name="theater_id" required>
-    	</div>
-
-    	<div class="buttons">
-        	<br>
-        	<button type="submit" class="btn btn-primary">Add Show Times</button>
-    	</div>
-	</form>
+	<form action="AddShowServlet" method="post">
+        <!-- Input fields for Movie_Name, Start_Time, End_Time, and theater_id -->
+        <input type="text" name="Movie_Name" placeholder="Movie Name" required>
+        <input type="time" name="Start_Time" required>
+        <input type="time" name="End_Time" required>
+        <input type="number" name="theater_id" placeholder="Theater ID" required>
+        <button type="submit">Add Show Time</button>
+    </form>
 
 	</div>
 	</a>

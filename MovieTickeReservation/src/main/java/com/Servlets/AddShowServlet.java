@@ -39,27 +39,36 @@ public class AddShowServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String movieName = request.getParameter("Movie_Name");
-	    Time start = Time.valueOf(request.getParameter("Start_Time"));
-	    Time end = Time.valueOf(request.getParameter("End_Time"));
-	    int theater = Integer.parseInt(request.getParameter("theater_id"));
+        String startTimeStr = request.getParameter("Start_Time");
+        String endTimeStr = request.getParameter("End_Time");
 
-	    Movie movie = new Movie();
-	    movie.setMovie_Name(movieName);
-	    Theater theaterId = new Theater();
-	    theaterId.setTheater_Id(theater);
+        // Check if theater_id parameter is not null
+        String theaterIdParameter = request.getParameter("theater_id");
+        int theater = (theaterIdParameter != null && !theaterIdParameter.isEmpty())
+                ? Integer.parseInt(theaterIdParameter)
+                : 0;
 
-	    ShowTimes showtime = new ShowTimes(movie, start, end, theaterId);
-	    showtime.setMovie_name(movie);
-	    showtime.setStart_Time(start);
-	    showtime.setEnd_Time(end);
-	    showtime.setTheater_id(theaterId);
+        try {
+            // Parse Time from String
+            Time start = Time.valueOf(startTimeStr + ":00");
+            Time end = Time.valueOf(endTimeStr + ":00");
 
-	    ShowTimeDao showTimeDao = new ShowTimeDao();
-	    showTimeDao.InsertShowTime(showtime);
+            Movie movie = new Movie();
+            movie.setMovie_Name(movieName);
 
-	    response.sendRedirect("ShowTime.jsp");
+            Theater theaterId = new Theater();
+            theaterId.setTheater_Id(theater);
+
+            ShowTimes showtime = new ShowTimes(movie, start, end, theaterId);
+
+            ShowTimeDao showTimeDao = new ShowTimeDao();
+            showTimeDao.InsertShowTime(showtime);
+
+            response.sendRedirect("viewshowtime.jsp");
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace(); // Log the exception or handle it appropriately
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid time format. Please use HH:mm");
+        }
 	}
-
 }
