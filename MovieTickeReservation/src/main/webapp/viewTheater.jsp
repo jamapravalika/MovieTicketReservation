@@ -20,8 +20,13 @@
 <title>Therters</title>
 <link rel="stylesheet" href="assets/css/style-starter.css">
 <link href="//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <style>
+body {
+     text-align: center;
+ }
 .container{
 	padding :0 5%;
 }
@@ -75,11 +80,14 @@ nav ul li a:hover {
 	
 
    <h1>List of Movies</h1>
-    <table border="1">
-        <tr>
-            <th>Theater Name</th>
-            <th>address</th>
-            <th>capacity</th>
+    <div>
+  <table class="table" style="max-width: 80%;margin: auto;">
+  <thead class="table">
+    <tr class="table-danger">
+            <th scope="col">Theater Name</th>
+            <th scope="col">address</th>
+            <th scope="col">capacity</th>
+            <th scope="col">Action</th>
         </tr>
         
         <% List<Theater> theaters = (List<Theater>) request.getAttribute("theaters");
@@ -90,7 +98,7 @@ nav ul li a:hover {
             <td><%= Theater.getAddress() %></td>
             <td><%= Theater.getCapacity() %></td>
             
-            <td><a href="EditMovie.jsp">Edit</a> / <a href="">Delete</a></td>
+            <td><a href="EditMovie.jsp"><button type="button" class="btn btn-success">Edit</button></a> / <a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
         </tr>
     <% } 
    

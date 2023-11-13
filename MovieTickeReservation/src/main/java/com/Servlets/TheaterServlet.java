@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.Dao.TheaterDao;
 import com.Db.DbConnection;
 import com.Model.Theater;
-
+@WebServlet("/viewTheater")
 public class TheaterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String Select_QUERY = "Select * from movies";

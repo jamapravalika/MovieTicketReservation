@@ -9,10 +9,11 @@
 <title>Show Time List</title>
 <link rel="stylesheet" href="assets/css/style-starter.css">
 <link href="//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
-<style>
-.container{
-	padding :0 5%;
-}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <style>
+ body {
+     text-align: center;
+ }
 
 nav{
 	text-align: center;
@@ -66,15 +67,16 @@ nav ul li a:hover {
     <% 
         List<ShowTimes> showList = (List<ShowTimes>) request.getAttribute("showList");
     %>
-
-    <table border="1">
-    <tr>
-        <th>ShowTime ID</th>
-        <th>Movie Name</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Theater ID</th>
-        <th>Action</th>
+<div>
+  <table class="table" style="max-width: 80%;margin: auto;">
+  <thead class="table">
+    <tr class="table-danger">
+        <th scope="col">ShowTime ID</th>
+        <th scope="col">Movie Name</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Theater ID</th>
+        <th scope="col">Action</th>
     </tr>
 
    	 	<% if (showList != null && !showList.isEmpty()) { %>
@@ -97,6 +99,6 @@ nav ul li a:hover {
     	</tr>
     	<% } %>
 	</table>
-	
+</div>
 </body>
 </html>

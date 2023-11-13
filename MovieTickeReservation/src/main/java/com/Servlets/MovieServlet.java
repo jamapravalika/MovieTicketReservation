@@ -21,7 +21,7 @@ import com.Dao.MovieDao;
 import com.Db.DbConnection;
 import com.Model.Movie;
 
-@WebServlet("/MoviesPage1")
+@WebServlet("/viewmovies")
 @MultipartConfig
 public class MovieServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -43,7 +43,7 @@ public class MovieServlet extends HttpServlet {
     	    RequestDispatcher dispatcher = request.getRequestDispatcher("MoviesPage1.jsp");
     	    dispatcher.forward(request, response);
 		
-		  RequestDispatcher dispatcher1 = request.getRequestDispatcher("dmovie.jsp");
+		  RequestDispatcher dispatcher1 = request.getRequestDispatcher("viewmovies.jsp");
 		  dispatcher1.forward(request, response);
 		 
     }
@@ -127,7 +127,7 @@ public class MovieServlet extends HttpServlet {
             }
         }
 
-        response.sendRedirect("/MovieTickeReservation/MoviesPage1");
+        response.sendRedirect("/MovieTickeReservation/viewmovies");
     }
     
     private String getSubmittedFileName(Part part) {
