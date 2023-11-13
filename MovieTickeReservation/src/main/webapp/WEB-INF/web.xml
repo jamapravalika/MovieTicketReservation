@@ -20,7 +20,7 @@
 </servlet>
 <servlet-mapping>
     <servlet-name>DisplayMovies</servlet-name>
-    <url-pattern>/dmovie</url-pattern>
+    <url-pattern>/DisplayMovies</url-pattern>
 </servlet-mapping>
  <servlet>
         <servlet-name>BookingServlet</servlet-name>

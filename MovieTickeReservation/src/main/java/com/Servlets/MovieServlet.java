@@ -21,7 +21,7 @@ import com.Dao.MovieDao;
 import com.Db.DbConnection;
 import com.Model.Movie;
 
-@WebServlet("/viewmovies")
+@WebServlet("/MoviesPage1")
 @MultipartConfig
 public class MovieServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -42,10 +42,7 @@ public class MovieServlet extends HttpServlet {
 		 */
     	    RequestDispatcher dispatcher = request.getRequestDispatcher("MoviesPage1.jsp");
     	    dispatcher.forward(request, response);
-		
-		  RequestDispatcher dispatcher1 = request.getRequestDispatcher("viewmovies.jsp");
-		  dispatcher1.forward(request, response);
-		 
+				 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

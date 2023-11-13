@@ -22,7 +22,7 @@ import com.Model.Movie;
 /**
  * Servlet implementation class DisplayMovies
  */
-@WebServlet("/DisplayMovies")
+@WebServlet("/viewmovies")
 public class DisplayMovies extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,10 +46,8 @@ public class DisplayMovies extends HttpServlet {
 	    List<Movie> movies = movieDao.getAllMovies();
 	    	    
 	    request.setAttribute("movies", movies);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("dmovie.jsp");
-	    dispatcher.forward(request, response);	
-	    
-	    
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("viewmovies.jsp");
+	    dispatcher.forward(request, response);   
 	}
 
 	/**

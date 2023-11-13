@@ -98,7 +98,7 @@ nav ul li a:hover {
             <td><%= Theater.getAddress() %></td>
             <td><%= Theater.getCapacity() %></td>
             
-            <td><a href="EditMovie.jsp"><button type="button" class="btn btn-success">Edit</button></a> / <a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+            <td><a href="EditMovie.jsp"><button type="button" class="btn btn-success">Edit</button></a><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
         </tr>
     <% } 
    

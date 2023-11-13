@@ -88,8 +88,8 @@ nav ul li a:hover {
             <td><%= showtime.getEnd_Time() %></td>
             <td><%= showtime.getTheater_id().getTheater_Id() %></td>
             <td>
-                <a href="EditShowServlet?ShowTime_Id=<%= showtime.getShowtime_Id() %>">Edit</a>
-				<a href="RemoveShowServlet?ShowTime_Id=<%= showtime.getShowtime_Id() %>">Remove</a>
+                <a href="EditShowServlet?ShowTime_Id=<%= showtime.getShowtime_Id() %>"><button type="button" class="btn btn-success">Edit</button></a> </a>
+				<a href="RemoveShowServlet?ShowTime_Id=<%= showtime.getShowtime_Id() %>"><button type="button" class="btn btn-danger">Delete</button></a>
             </td>
         </tr>
     	<% } %>

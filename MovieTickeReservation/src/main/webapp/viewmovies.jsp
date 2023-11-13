@@ -100,7 +100,7 @@ nav ul li a:hover {
 				<th scope="col">Casts</th>
 				<th scope="col">Description</th>
 				<th scope="col">Duration</th>
-				<th scope="col">Action</th>
+				<th scope="col" style="width: 14%;">Action</th>
 			</tr>
 
 			<% List<Movie> movies = (List<Movie>) request.getAttribute("movies");
@@ -113,8 +113,7 @@ nav ul li a:hover {
 				<td><%= movie.getMovie_Casts() %></td>
 				<td><%= movie.getMovie_Description() %></td>
 				<td><%= movie.getMovie_Duration() %></td>
-				<td><a href="EditMovie.jsp"><button type="button"
-							class="btn btn-success">Edit</button></a> / <a href="">Delete</a></td>
+				<td><a href="EditMovie.jsp"><button type="button" class="btn btn-success">Edit</button></a><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
 			</tr>
 			<% } 
    
