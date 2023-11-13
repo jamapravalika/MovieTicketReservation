@@ -184,6 +184,7 @@ display: inline-block;
                                                        </button>
                                                    </div>
                                                    <div class="modal-body" style="align-items: center;">
+                                                   <form action="BookingServlet" action="post">
                                                        <h7>Total Seats</h7>
                                                        <br>
                                                        <div class="def-number-input number-input safari_only">
@@ -193,6 +194,9 @@ display: inline-block;
 														</div>
 														
 														
+														
+														
+													</form>	
 														
 													 <br>   
                                                    </div>

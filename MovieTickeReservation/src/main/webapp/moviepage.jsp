@@ -184,6 +184,7 @@ display: inline-block;
                                                        </button>
                                                    </div>
                                                    <div class="modal-body" style="align-items: center;">
+                                                   <form action="BookingServlet">
                                                        <h7>Total Seats</h7>
                                                        <br>
                                                        <div class="def-number-input number-input safari_only">
@@ -191,6 +192,12 @@ display: inline-block;
   															<input class="quantity" min="0" name="quantity" value="1" type="number">
  	 														<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><!-- <i class="fas fa-plus" style="margin-bottom: 8px; margin-right: 8px;"></i> --></button>
 														</div>
+														
+														
+														
+														
+													</form>	
+														
 													 <br>   
                                                    </div>
                                                    <div class="modal-footer">
