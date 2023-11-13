@@ -75,11 +75,11 @@ public class ShowTimeDao implements ShowTimingIntrf{
             ResultSet resultSet = statement.executeQuery(select_query);
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("Showtime_Id");
-                String movieName = resultSet.getString("Movie_Name");
-                Time start = resultSet.getTime("Start_Time");
-                Time end = resultSet.getTime("End_Time");
-                int theater = resultSet.getInt("theater_id");
+                int id = resultSet.getInt("showtimeId");
+                String movieName = resultSet.getString("movieName");
+                Time start = resultSet.getTime("startTime");
+                Time end = resultSet.getTime("endTime");
+                int theater = resultSet.getInt("theaterId");
 
                 Movie movie = new Movie();
                 movie.setMovie_Name(movieName);
