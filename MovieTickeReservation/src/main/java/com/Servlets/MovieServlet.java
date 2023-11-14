@@ -20,10 +20,12 @@ import javax.servlet.http.Part;
 import com.Dao.MovieDao;
 import com.Dao.ShowTimeDao;
 import com.Dao.TheaterDao;
+import com.Dao.UserDao;
 import com.Db.DbConnection;
 import com.Model.Movie;
 import com.Model.ShowTimes;
 import com.Model.Theater;
+import com.Model.users;
 
 @WebServlet("/moviepage")
 @MultipartConfig
@@ -44,6 +46,9 @@ public class MovieServlet extends HttpServlet {
         List<ShowTimes> show = showTimeDao.ListAllShowTime();
         request.setAttribute("showList", show);
     	
+        UserDao userDao = new UserDao();
+	    List<users> userList = userDao.getAllUsers(); 
+	    request.setAttribute("userList", userList);
     	
     	 MovieDao movieDao = new MovieDao();
     	 List<Movie> movies = movieDao.getAllMovies(); 

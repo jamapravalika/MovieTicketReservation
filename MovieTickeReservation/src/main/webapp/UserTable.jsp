@@ -1,111 +1,137 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-    <link rel="stylesheet" type="text/css" href="UserTable.css">
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<%@ page import="java.util.List" %>
+<%@ page import="com.Model.users" %> 
+<%@ page import="java.util.Base64" %>
+<%@ page import="java.sql.Blob" %>
+<%@ page import="java.io.InputStream" %>
+
+<!doctype html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Users</title>
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link href="//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+
 </head>
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    .container {
+        padding: 0 5%;
+    }
+
+    nav {
+        text-align: center;
+        background-color: #333;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: inline-block;
+        justify-content: center;
+    }
+
+    nav ul li {
+        float: left;
+        align: right;
+        margin: 0 20px;
+    }
+
+    nav ul li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    nav ul li a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+  .dropdown, .dropup {
+    position: static;
+    margin-top:4px;
+}
+
+</style>
+
 <body>
-    <nav>
+    <!-- header -->
+     <nav>
       <ul>
         <li><a href="AdmHome.jsp"><i class="fa fa-home"></i> Home</a></li>
         <li><a href="AddMovies.jsp"><i class="fa fa-film"></i> Add Movies</a></li>
-        <li><a href="/MovieTickeReservation/dmovie"><i class="fa fa-film"></i> View Movies</a></li>
-        <li><a href="UserTable.jsp"><i class="fa fa-users"></i> Users</a></li>
         <li><a href="theater.jsp"><i class="fa fa-building"></i> Theaters</a></li>
-        <li><a href="showtimings.jsp"><i class="fa fa-building"></i> Show Timings</a></li>
-        <li><a href="Seats.jsp"><i class="fa fa-building"></i> Seats</a></li>
+        <li><a href="addShowtiming.jsp"><i class="fa fa-building"></i> Show Timings</a></li>
+        <li><a href="/MovieTickeReservation/UserTable"><i class="fa fa-users"></i> Users</a></li>
+         <li class="nav-item dropdown">
+        <div class="dropdown">
+  			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    		View
+  		</button>
+  		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    		<a href="/MovieTickeReservation/viewmovies"><button class="dropdown-item" type="button">Movies</button></a>
+    		<a href="/MovieTickeReservation/viewTheater"><button class="dropdown-item" type="button">Theaters</button></a>
+    		<a href="/MovieTickeReservation/viewshowtime"><button class="dropdown-item" type="button">Show Timings</button></a>
+  		</div>
+		</div>
+		</li>
       </ul>
-    
     </nav>
-   <a>
-    <section id="users">
-        <h1>Users</h1>
-        
-            <div class="container">
-                <h2>User Management</h2>
-                <br>
-                </br>
-                <table bgcolor="black", style="width: 100%;">
-                    <thead>
-                        <tr bgcolor="grey">
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Created At</th>
+
+    <h1>List of Users</h1>
+    <div>
+        <table class="table" style="max-width: 80%;margin: auto;">
+            <thead class="table">
+                <tr class="table-danger">
+                    <th scope="col">User Name</th>
+                    <th scope="col">User Email</th>
+                    <th scope="col">User Mobile</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% List<users> userList = (List<users>) request.getAttribute("userList");
+                if (userList != null) {
+                    for (users user : userList) { %>
+                        <tr>
+                            <td><%= user.getUser_Name() %></td>
+                            <td><%= user.getUser_Email() %></td>
+                            <td><%= user.getUser_Mobile() %></td>
+                            <td><%= user.getRole() %></td>
+                            <td><%= user.getCreatedAt() %></td>
+                            <!-- Action buttons -->
+                            <td>
+                                <a href="EditUser.jsp"><button type="button" class="btn btn-success">Edit</button></a>
+                                <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Display user list here -->
-                        <tr bgcolor="white">
-                            <td>1</td>
-                            <td>User 1</td>
-                            <td>user1@example.com</td>
-                            <td>2023-09-30 14:25:00</td>
-                        </tr>
-                        <tr bgcolor="white">
-                            <td>2</td>
-                            <td>User 2</td>
-                            <td>user2@example.com</td>
-                            <td>2023-09-30 16:45:00</td>
-                        </tr>
-                        <tr bgcolor="white">
-                            <td>3</td>
-                            <td>User 3</td>
-                            <td>user3@example.com</td>
-                            <td>2023-09-30 14:25:00</td>
-                        </tr>
-                        <tr bgcolor="white">
-                            <td>4</td>
-                            <td>User 4</td>
-                            <td>user4@example.com</td>
-                            <td>2023-09-30 14:25:00</td>
-                        </tr>
-                        <tr bgcolor="white">
-                            <td>5</td>
-                            <td>User 5</td>
-                            <td>user5@example.com</td>
-                            <td>2023-09-30 14:25:00</td>
-                        </tr>
-                        <tr bgcolor="white">
-                            <td>6</td>
-                            <td>User 6</td>
-                            <td>user6@example.com</td>
-                            <td>2023-09-30 14:25:00</td>
-                        </tr>
-                        <tr bgcolor="white">
-                            <td>7</td>
-                            <td>User 7</td>
-                            <td>user7@example.com</td>
-                            <td>2023-09-30 14:25:00</td>
-                        </tr>
-                        <tr bgcolor="white">
-                            <td>8</td>
-                            <td>User 8</td>
-                            <td>user8@example.com</td>
-                            <td>2023-09-30 14:25:00</td>
-                        </tr>
-                        <tr bgcolor="white">
-                            <td>9</td>
-                            <td>User 9</td>
-                            <td>user9@example.com</td>
-                            <td>2023-09-30 14:25:00</td>
-                        </tr>
-                        <tr bgcolor="white">
-                            <td>10</td>
-                            <td>User 10</td>
-                            <td>user10@example.com</td>
-                            <td>2023-09-30 14:25:00</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
-            </div>
-        </a>
-        <!-- User management content goes here -->
-    </section>
+                <% } 
+                } %>
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>

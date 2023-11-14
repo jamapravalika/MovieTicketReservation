@@ -52,10 +52,9 @@
       <ul>
         <li><a href="AdmHome.jsp"><i class="fa fa-home"></i> Home</a></li>
         <li><a href="AddMovies.jsp"><i class="fa fa-film"></i> Add Movies</a></li>
-        <li><a href="UserTable.jsp"><i class="fa fa-users"></i> Users</a></li>
         <li><a href="theater.jsp"><i class="fa fa-building"></i> Theaters</a></li>
         <li><a href="addShowtiming.jsp"><i class="fa fa-building"></i> Show Timings</a></li>
-        <li><a href="seat.jsp"><i class="fa fa-building"></i> Seats</a></li>
+        <li><a href="/MovieTickeReservation/UserTable"><i class="fa fa-users"></i> Users</a></li>
          <li class="nav-item dropdown">
         <div class="dropdown">
   			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
