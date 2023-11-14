@@ -12,11 +12,9 @@
 	<link rel="stylesheet" href="assets/css/Ticket.css">
 </head>
 <body>
-
     <div class="center">
       <div class="tickets">
         <div class="ticket-selector">
-
           <div class="seats">
             <div class="status">
               <div class="item">Available</div>
@@ -29,16 +27,6 @@
             </div>
           </div>
           <div class="timings">
-           <div class="theatres">
-              <input type="radio" name="theatre" id="th1" checked />
-              <label for="th1" class="theatre">Theatre 1</label>
-              <input type="radio" id="th2" name="theatre" />
-              <label for="th2" class="theatre"> Theatre 2 </label>
-              <input type="radio" name="theatre" id="th3" />
-              <label for="th3" class="theatre"> Theatre 3 </label>
-              <input type="radio" id="th4" name="theatre" />
-              <label for="th4" class="theatre"> Theatre 4 </label>
-            </div>
             <div class="dates">
               <input type="radio" name="date" id="d1" checked />
               <label for="d1" class="dates-item">
@@ -76,16 +64,7 @@
                 <div class="date">11</div>
               </label>
             </div>
-            <div class="times">
-              <input type="radio" name="time" id="t1" checked />
-              <label for="t1" class="time">11:00am</label>
-              <input type="radio" id="t2" name="time" />
-              <label for="t2" class="time"> 2:30pm </label>
-              <input type="radio" id="t3" name="time" />
-              <label for="t3" class="time"> 6:00pm </label>
-              <input type="radio" id="t4" name="time" />
-              <label for="t4" class="time"> 9:30pm </label>
-            </div>
+            
           </div>
         </div>
         <div class="price">
@@ -93,7 +72,7 @@
             <span> <span class="count">0</span> Tickets </span>
             <div class="amount">0</div>
           </div>
-          <button type="button">Book</button>
+          <a href="ticket.jsp"><button type="button">Book</button></a>
         </div>
       </div>
     </div>

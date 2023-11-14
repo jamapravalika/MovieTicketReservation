@@ -18,34 +18,64 @@ import com.Model.Bookings;
 
 public class BookingDAO implements BookingDAOIntr {
 
-	public void createBooking(int BookingId, int UserId, String MovieName, Time ShowTime, float TotalPrice,
-			Date BookingDate) {
+	public void createBooking(String UserEmail, String MovieName,String TheaterName,int Quantity, Time startTime, float TotalPrice,Date BookingDate) {
 		// TODO Auto-generated method stub
-		Connection conn = DbConnection.getConnection();
-        final String INSERT_QUERY = "INSERT INTO BOOKINGS (BOOKINGID, USERID, MOVIE_NAME, SHOWTIME, TOTAL_PRICE, BOOKING_DATE, CONFIRMED) VALUES (?, ?, ?, ?, ?, ?, ?);";
+		Connection conn = null;
+        try {
+            conn = DbConnection.getConnection();
+            conn.setAutoCommit(false);  // Disable auto-commit to manage transactions
 
-        try (PreparedStatement pstmt = conn.prepareStatement(INSERT_QUERY)) {
-            pstmt.setInt(1, BookingId);
-            pstmt.setInt(2, UserId);
-            pstmt.setString(3, MovieName);
-            pstmt.setTime(4, ShowTime);
-            pstmt.setFloat(5, TotalPrice);
-            pstmt.setTimestamp(6, new Timestamp(BookingDate.getTime()));
-            pstmt.setBoolean(7, false);
+            final String INSERT_QUERY = "INSERT INTO Bookings (useremail, MovieName, TheaterName, ShowTime,quantity, totalPrice, bookingDate) VALUES (?, ?, ?, ?, ?, ?,?);";
 
-            int rowsAffected = pstmt.executeUpdate();
-            if (rowsAffected > 0) {
-                System.out.println("Booking created successfully");
-            } else {
-                System.out.println("Failed to create the booking");
+            try (PreparedStatement pstmt = conn.prepareStatement(INSERT_QUERY)) {
+                pstmt.setString(1, UserEmail);
+                pstmt.setString(2, MovieName);
+                pstmt.setString(3, TheaterName);
+                pstmt.setTime(4, startTime);
+                pstmt.setInt(5, Quantity);
+                pstmt.setFloat(6, TotalPrice);
+                pstmt.setTimestamp(7, new Timestamp(BookingDate.getTime()));
+
+                int rowsAffected = pstmt.executeUpdate();
+                System.out.println("ShowTime value to be inserted: " + startTime);
+
+                if (rowsAffected > 0) {
+                    System.out.println("Booking created successfully");
+                } else {
+                    System.out.println("Failed to create the booking");
+                }
             }
+
+            conn.commit();  // Commit the transaction
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(conn);  // Rollback the transaction in case of an exception
         } finally {
-            System.out.println("Finally Block");
+            closeConnection(conn);  // Close the database connection
         }
-		
-	}
+    }
+	
+	 private void rollback(Connection connection) {
+	        if (connection != null) {
+	            try {
+	                connection.rollback();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+	    private void closeConnection(Connection connection) {
+	        if (connection != null) {
+	            try {
+	                connection.setAutoCommit(true);
+	                connection.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	
 
 	public boolean confirmBooking(int Booking_Id) {
 		// TODO Auto-generated method stub
@@ -87,34 +117,36 @@ public class BookingDAO implements BookingDAOIntr {
         }
 	}
 
-	public void ShowBooking(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		Connection conn = DbConnection.getConnection();
-        final String QUERY = "SELECT * FROM BOOKINGS";
+	public List<Bookings> ShowBooking(HttpServletRequest request) {
+	    // TODO Auto-generated method stub
+	    Connection conn = DbConnection.getConnection();
+	    final String QUERY = "SELECT * FROM bookings";
+	    List<Bookings> bookings = new ArrayList<>();
 
-        try {
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery(QUERY);
-            List<Bookings> bookings = new ArrayList<>();
+	    try {
+	        Statement stmt = conn.createStatement();
+	        ResultSet result = stmt.executeQuery(QUERY);
 
-            while (result.next()) {
-                Bookings booking = new Bookings();
-                booking.setBookingId(result.getInt(1));
-                booking.setUserId(result.getInt(2));
-                booking.setMovieName(result.getString(3));
-                booking.setShowTime(result.getTime(4));
-                booking.setTotalPrice(result.getFloat(5));
-                booking.setBookingDate(result.getTimestamp(6));
-                booking.setConfirmed(result.getBoolean(7));
-                bookings.add(booking);
-            }
+	        while (result.next()) {
+	        	Bookings booking = new Bookings();
+	            booking.setUseremail(result.getString("useremail"));  // Use column name
+	            booking.setMovieName(result.getString("MovieName"));  // Use column name
+	            booking.setTheaterName(result.getString("TheaterName"));  // Use column name
+	            booking.setShowTime(result.getTime("ShowTime"));
+	            booking.setQuantity(result.getInt("quantity"));  // Use column name
+	            booking.setTotalPrice(result.getFloat("totalPrice"));  // Use column name
+	            booking.setBookingDate(result.getTimestamp("bookingDate"));  // Use column name
+	            bookings.add(booking);
+	        }
 
-            request.setAttribute("bookings", bookings); // Set the bookings as a request attribute
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            System.out.println("Finally Block");
-        }
+	        request.setAttribute("bookings", bookings); 
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        System.out.println("Finally Block");
+	    }
+
+	    return bookings;
 	}
 }
 

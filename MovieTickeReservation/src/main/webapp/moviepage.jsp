@@ -1,8 +1,3 @@
-<%
-	if(session.getAttribute("name")==null){
-		response.sendRedirect("banner.jsp");
-	}
-%>
 
 <%@ page import="java.util.List"%>
 <%@ page import="com.Model.Movie"%>
@@ -310,7 +305,7 @@ tr {
 												</button>
 											</div>
 											<div class="modal-body" style="align-items: center;">
-												<form action="BookingServlet">
+												<form action="Booking" method="post">
 													<h7>Total Seats</h7>
 													<br>
 													<div class="def-number-input number-input safari_only">
@@ -329,25 +324,16 @@ tr {
 															<tr>
 																<% 
         												List<Theater> theaters = (List<Theater>) request.getAttribute("theaters");
-        												System.out.println("Theaters: " + theaters);
         												if (theaters != null) {
             											for (Theater theater : theaters) { %>
 
 																<td>
 																	<div class="theatres">
-																		<input type="text" class="form-control" id="moviename"
-																			name="moviename" style="display: none;"
-																			value="<%= movie.getMovie_Name() %>"> 
-																			<input
-																			type="text" class="form-control" id="moviename"
-																			name="username" style="display: none;"
-																			value="<%=session.getAttribute("name") %>">  <input
-																			type="radio"
-																			name="theatre_<%= movie.getMovie_Id() %>"
-																			id="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>"
-																			checked /> <label
-																			for="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>"
-																			class="theatre"><%= theater.getTheater_Name() %></label>
+    																	<input type="hidden" class="form-control moviename" name="moviename" value="<%= movie.getMovie_Name() %>">
+    																	<%-- <input type="hidden" class="form-control" id="useremail" name="useremail" style="display: none;" value="<%= (String) session.getAttribute("useremail") %>">  
+ --%>
+    																	<input type="radio" name="theatre_name" id="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>" value="<%= theater.getTheater_Name() %>" checked /> 
+																		<label for="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>" class="theatre"><%= theater.getTheater_Name() %></label>
 
 																	</div>
 																</td>
@@ -363,13 +349,10 @@ tr {
 																<% for (ShowTimes showtime : showList) { %>
 																<td>
 																	<div class="times">
-																		<input type="radio"
-																			name="time_<%= movie.getMovie_Id() %>"
-																			id="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>"
-																			checked /> <label
-																			for="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>"
-																			class="time"><%= showtime.getStart_Time() %></label>
-																	</div>
+                    													<input type="radio" name="time_start" id="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>" value="<%= showtime.getStart_Time() %>" checked /> 
+																		<label for="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>" class="time"><%= showtime.getStart_Time() %></label>
+
+                													</div>
 																</td>
 																<% } %>
 																<% } else { %>
@@ -381,17 +364,14 @@ tr {
 															</tr>
 														</table>
 
-
+													<button type="submit" class="btn btn-primary">Select Seats</button>
 													</div>
 												</form>
 
 												<br>
 											</div>
 											<div class="modal-footer">
-												<a href="TicketBook.jsp" class="btn btn-primary">Select
-													Seats</a>
-												<button type="submit" class="btn btn-secondary"
-													data-dismiss="modal">Close</button>
+												<button type="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
 											</div>
 										</div>
 									</div>
