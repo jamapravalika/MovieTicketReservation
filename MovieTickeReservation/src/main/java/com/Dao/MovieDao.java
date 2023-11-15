@@ -14,11 +14,12 @@ import com.Db.DbConnection;
 import com.Model.Movie;
 import com.Model.Theater;
 
-public class MovieDao implements MoviesDaoIntrfc{
+public  class MovieDao implements MoviesDaoIntrfc{
 	private static final String Select_QUERY = "Select * from movies";
 	private static final String Insert_QUERY = "Insert into movies (movieId,theaterId,movie_name,director,releasedate,casts,description,poster,duration,trailerlink,genre) values(?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String Update_QUERY = "UPDATE movies SET movie_name = ?, director = ?, relasedate = ?, casts = ?, description = ?, duration = ?, trailerlink = ?, genre = ? WHERE movieId = ?";
+	private static final String Update_QUERY = "UPDATE movies SET movie_name = ?, director = ?, releasedate = ?, casts = ?, description = ?, duration = ?, trailerlink = ?, genre = ? WHERE movieId = ?";
 	private static final String Delete_QUERY="DELETE FROM movies WHERE MovieId = ?";
+	
 	Connection con=DbConnection.getConnection();
 	public List<Movie> getAllMovies() {
 		
@@ -86,32 +87,41 @@ public class MovieDao implements MoviesDaoIntrfc{
 		}
 
 	}
-	public void UpadateMovies(Movie mov) {
-		
-		try {
-			  mov = new Movie();
+
+	  
+
+	    public static boolean UpdateMovie(Movie mov) {
+	        Connection con = DbConnection.getConnection();
+
+	        try {
 	            PreparedStatement pstmt = con.prepareStatement(Update_QUERY);
-	    
-				
-				pstmt.setInt(1, mov.getMovie_Id());
-	            pstmt.setInt(2, mov.getTheater_Id());
-				pstmt.setString(3, mov.getMovie_Name());
-				pstmt.setString(4, mov.getMovie_Director());
-				pstmt.setDate(5, new Date(mov.getMovie_Release_Date().getTime()));
-				pstmt.setString(6, mov.getMovie_Casts()); 
-				pstmt.setString(7, mov.getMovie_Description());
-				pstmt.setString(8, mov.getMovie_Poster());
-				pstmt.setString(9, mov.getMovie_Duration());
-				pstmt.setString(10, mov.getTrailerlink());
-				pstmt.setString(11, mov.getGenre());
-				pstmt.executeUpdate();
-	         
-	          }
-		  catch (SQLException e) {
+
+	            pstmt.setString(1, mov.getMovie_Name());
+	            pstmt.setString(2, mov.getMovie_Director());
+	            pstmt.setDate(3, new java.sql.Date(mov.getMovie_Release_Date().getTime()));
+	            pstmt.setString(4, mov.getMovie_Casts());
+	            pstmt.setString(5, mov.getMovie_Description());
+	            pstmt.setString(6, mov.getMovie_Duration());
+	            pstmt.setString(7, mov.getTrailerlink());
+	            pstmt.setString(8, mov.getGenre());
+	            pstmt.setInt(9, mov.getMovie_Id());
+
+	            int rowsUpdated = pstmt.executeUpdate();
+
+	            return rowsUpdated > 0;
+	        } catch (SQLException e) {
 	            e.printStackTrace();
-	        } 
-		
-	}
+	        } finally {
+	            try {
+	                con.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+
+	        return false;
+	    }
+	
 
 	/*
 	 * public void DeleteMovies(Movie mov) {
@@ -142,4 +152,9 @@ public class MovieDao implements MoviesDaoIntrfc{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public boolean UpadateMovies(Movie mov) {
+		// TODO Auto-generated method stub
+		return false;
 	}
+}
