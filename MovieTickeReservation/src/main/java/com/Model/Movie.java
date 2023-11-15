@@ -76,8 +76,8 @@ public Movie(int movie_Id, int theater_Id, String movie_Name, String movie_Direc
 	public Date getMovie_Release_Date() {
 		return movie_Release_Date;
 	}
-	public void setMovie_Release_Date(Date movie_Release_Date) {
-		this.movie_Release_Date = movie_Release_Date;
+	public void setMovie_Release_Date(Date string) {
+		this.movie_Release_Date = string;
 	}
 	public String getMovie_Casts() {
 		return movie_Casts;

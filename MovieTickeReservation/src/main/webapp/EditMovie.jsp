@@ -46,7 +46,7 @@
       </ul>
     </nav>
 	<div class="container" style="max-width: 660px;">
-        <form enctype="multipart/form-data" action="Update_movieServlet" method="post">
+        <form enctype="multipart/form-data" action="Edit"  method="post">
             <!-- Existing fields -->
             <div class="form-group">
                 <label for="movieImage">Movie Poster:</label>
