@@ -5,7 +5,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 
 
-public class Bookings {
+public class Bookings extends Movie{
 	private int BookingId;
 	private String Useremail;
 	private String MovieName;

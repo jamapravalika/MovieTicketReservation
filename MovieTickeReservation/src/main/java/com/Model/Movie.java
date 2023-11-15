@@ -39,26 +39,7 @@ public Movie(int movie_Id, int theater_Id, String movie_Name, String movie_Direc
 		this.genre = genre;
 		this.theater = theater;
 	}
-//    public Movie() {
-//		super();
-//	}
-//	public Movie(int movie_Id, int theater_Id, String movie_Name, String movie_Director, Date movie_Release_Date,
-//			String movie_Casts, String movie_Description, byte[] movie_Poster, String movie_Duration,
-//			String trailerlink, String genre, Theater theater) {
-//		super();
-//		this.movie_Id = movie_Id;
-//		Theater_Id = theater_Id;
-//		this.movie_Name = movie_Name;
-//		this.movie_Director = movie_Director;
-//		this.movie_Release_Date = movie_Release_Date;
-//		this.movie_Casts = movie_Casts;
-//		this.movie_Description = movie_Description;
-//		this.movie_Poster = movie_Poster;
-//		this.movie_Duration = movie_Duration;
-//		this.trailerlink = trailerlink;
-//		this.genre = genre;
-//		this.theater = theater;
-//	}
+
 	public int getTheater_Id() {
 		return Theater_Id;
 	}

@@ -123,6 +123,13 @@
  		<servlet-name>EditServlet</servlet-name>
  		<servlet-class>com.Servlets.EditServlet</servlet-class>
  	</servlet>
+ 	<servlet>
+ 		<description>
+ 		</description>
+ 		<display-name>CartServlet</display-name>
+ 		<servlet-name>CartServlet</servlet-name>
+ 		<servlet-class>com.Servlets.CartServlet</servlet-class>
+ 	</servlet>
 
     
     <servlet-mapping>
@@ -184,6 +191,10 @@
 	<servlet-mapping>
 		<servlet-name>EditServlet</servlet-name>
 		<url-pattern>/Edit</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CartServlet</servlet-name>
+		<url-pattern>/ticket</url-pattern>
 	</servlet-mapping>
     
 </web-app>
