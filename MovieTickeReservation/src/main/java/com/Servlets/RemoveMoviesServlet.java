@@ -11,13 +11,13 @@ import com.Dao.MovieDao;
 /**
  * Servlet implementation class RemoveServlet
  */
-public class RemoveServlet extends HttpServlet {
+public class RemoveMoviesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RemoveServlet() {
+    public RemoveMoviesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

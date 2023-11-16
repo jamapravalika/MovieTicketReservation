@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.Dao.MovieDao;
 import com.Model.Movie;
 
-public class EditServlet extends HttpServlet {
+public class EditMovieServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int movie_Id = Integer.parseInt(request.getParameter("movieID")); // Assuming the hidden field in your form is named movieID
+        int movie_Id = Integer.parseInt(request.getParameter("movieID")); 
         String movie_name = request.getParameter("movieName");
         String movie_Director = request.getParameter("director");
         String movie_Release_Date = request.getParameter("releasedate");
@@ -36,7 +36,6 @@ public class EditServlet extends HttpServlet {
         mov.setMovie_Name(movie_name);
         mov.setMovie_Director(movie_Director);
 
-        // Parse and set Release Date
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             mov.setMovie_Release_Date(dateFormat.parse(movie_Release_Date));
@@ -50,13 +49,13 @@ public class EditServlet extends HttpServlet {
         mov.setMovie_Duration(movie_Duration);
         mov.setTrailerlink(trailerlink);
         mov.setGenre(genre);
-
-        boolean updated = MovieDao.UpdateMovie(mov);
+        
+        MovieDao movieDao = new MovieDao();
+        boolean updated = movieDao.UpadateMovies(mov);
 
         if (updated) {
             response.sendRedirect("viewmovies.jsp");
         } else {
-            // Handle the case where the update was not successful
             RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
             dispatcher.forward(request, response);
         }

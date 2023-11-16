@@ -127,7 +127,14 @@ nav ul li a:hover {
 				<td><%= movie.getMovie_Casts() %></td>
 				<td><%= movie.getMovie_Description() %></td>
 				<td><%= movie.getMovie_Duration() %></td>
-				<td><a href="EditMovie.jsp"><button type="button" class="btn btn-success">Edit</button></a><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+				<td>
+        			<a href="/MovieTickeReservation/EditMovie.jsp?movieId=<%= movie.getMovie_Id() %>">
+            		<button type="button" class="btn btn-success">Edit</button>
+        		</a>
+        			<a href="/MovieTickeReservation/DeleteMovieServlet?movieId=<%= movie.getMovie_Id() %>">
+            		<button type="button" class="btn btn-danger">Delete</button>
+        		</a>
+    			</td>
 			</tr>
 			<% } 
    

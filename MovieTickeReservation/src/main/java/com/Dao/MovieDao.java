@@ -88,39 +88,6 @@ public  class MovieDao implements MoviesDaoIntrfc{
 
 	}
 
-	  
-
-	    public static boolean UpdateMovie(Movie mov) {
-	        Connection con = DbConnection.getConnection();
-
-	        try {
-	            PreparedStatement pstmt = con.prepareStatement(Update_QUERY);
-
-	            pstmt.setString(1, mov.getMovie_Name());
-	            pstmt.setString(2, mov.getMovie_Director());
-	            pstmt.setDate(3, new java.sql.Date(mov.getMovie_Release_Date().getTime()));
-	            pstmt.setString(4, mov.getMovie_Casts());
-	            pstmt.setString(5, mov.getMovie_Description());
-	            pstmt.setString(6, mov.getMovie_Duration());
-	            pstmt.setString(7, mov.getTrailerlink());
-	            pstmt.setString(8, mov.getGenre());
-	            pstmt.setInt(9, mov.getMovie_Id());
-
-	            int rowsUpdated = pstmt.executeUpdate();
-
-	            return rowsUpdated > 0;
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        } finally {
-	            try {
-	                con.close();
-	            } catch (SQLException e) {
-	                e.printStackTrace();
-	            }
-	        }
-
-	        return false;
-	    }
 	
 
 	/*
@@ -133,28 +100,55 @@ public  class MovieDao implements MoviesDaoIntrfc{
 	 * } catch (SQLException e) { e.printStackTrace(); }
 	 * }
 	 */
-	
-	public void DeleteMovies(int movieId) {
-	    try {
-	        PreparedStatement pstmt = con.prepareStatement(Delete_QUERY);
-	        pstmt.setInt(1, movieId);
-	        pstmt.executeUpdate();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	}
-	public Movie getMovieById(int movieId) {
-	
-		return null;
-	}
+	/*
+	 * public Movie getMovieById(int movieId) {
+	 * 
+	 * return null; }
+	 */
 	@Override
 	public void DeleteMovies(Movie mov) {
-		// TODO Auto-generated method stub
+		 try {
+	            PreparedStatement pstmt = con.prepareStatement(Delete_QUERY);
+	            pstmt.setInt(1, mov.getMovie_Id());
+	            pstmt.executeUpdate();
+	            con.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
 		
 	}
 	@Override
 	public boolean UpadateMovies(Movie mov) {
 		// TODO Auto-generated method stub
-		return false;
+		Connection con = DbConnection.getConnection();
+
+        try {
+            PreparedStatement pstmt = con.prepareStatement(Update_QUERY);
+
+            pstmt.setString(1, mov.getMovie_Name());
+            pstmt.setString(2, mov.getMovie_Director());
+            pstmt.setDate(3, new java.sql.Date(mov.getMovie_Release_Date().getTime()));
+            pstmt.setString(4, mov.getMovie_Casts());
+            pstmt.setString(5, mov.getMovie_Description());
+            pstmt.setString(6, mov.getMovie_Duration());
+            pstmt.setString(7, mov.getTrailerlink());
+            pstmt.setString(8, mov.getGenre());
+            pstmt.setInt(9, mov.getMovie_Id());
+
+            int rowsUpdated = pstmt.executeUpdate();
+
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return false;
 	}
+
 }

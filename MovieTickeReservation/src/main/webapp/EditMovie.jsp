@@ -6,6 +6,9 @@
 <%@ page import="java.util.Base64" %>
 <%@ page import="java.sql.Blob" %>
 <%@ page import="java.io.InputStream" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +48,22 @@
 		</li>
       </ul>
     </nav>
+    
+    
+    <%
+    // Assuming "movie" is the attribute name for the Movie object in the request
+    Movie movie = (Movie) request.getAttribute("movie");
+
+    // Format the release date for the input field
+    String formattedReleaseDate = null;
+    if (movie != null && movie.getMovie_Release_Date() != null) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        formattedReleaseDate = sdf.format(movie.getMovie_Release_Date());
+    }
+%>
+    
+    
+    
 	<div class="container" style="max-width: 660px;">
         <form enctype="multipart/form-data" action="Edit"  method="post">
             <!-- Existing fields -->
@@ -54,14 +73,15 @@
             </div>
             <div class="form-group">
                 <label for="movieName">Movie Name:</label>
-                <input type="text" class="form-control" id="movieName" name="movieName" value="<%-- <%= movie.getMovie_Name() %> --%>" required>
+                <input type="text" class="form-control" id="movieName" name="movieName" value="<%= movie.getMovie_Name() %>" required>
             </div>
         
             <!-- Additional fields -->
             <div class="form-group">
-                <label for="releasedate">Release Date:</label>
-                <input type="date" class="form-control" id="releasedate" name="releasedate" required>
-            </div>
+            <label for="releasedate">Release Date:</label>
+            <input type="date" class="form-control" id="releasedate" name="releasedate"
+                   value="<%= formattedReleaseDate %>" required>
+        	</div>
             <div class="form-group">
                 <label for="director">Director:</label>
                 <input type="text" class="form-control" id="director" name="director" required>
@@ -86,8 +106,7 @@
                 <label for="description">Description:</label>
                 <textarea class="form-control" id="description" name="description" rows="6" required></textarea>
             </div>
-            <!-- Movie ID (hidden field) -->
-            <input type="hidden" id="movieID" name="movieID" value="<%-- <%= movie.getMovie_Id() %> --%>"> <!-- Replace with the actual movie ID -->
+            <input type="hidden" id="movieID" name="movieID" value=" <%= movie.getMovie_Id() %>">
             <div class="buttons">
                 <br>
                 <button type="submit" class="btn btn-primary">Update Movie</button>
@@ -96,4 +115,3 @@
         
     </div>
 </body>
-</html>
