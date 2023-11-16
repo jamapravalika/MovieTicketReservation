@@ -19,11 +19,15 @@ public  class MovieDao implements MoviesDaoIntrfc{
 	private static final String Insert_QUERY = "Insert into movies (movieId,theaterId,movie_name,director,releasedate,casts,description,poster,duration,trailerlink,genre) values(?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String Update_QUERY = "UPDATE movies SET movie_name = ?, director = ?, releasedate = ?, casts = ?, description = ?, duration = ?, trailerlink = ?, genre = ? WHERE movieId = ?";
 	private static final String Delete_QUERY="DELETE FROM movies WHERE MovieId = ?";
+	private static final String SELECT_BY_ID_QUERY = "SELECT * FROM movies WHERE movieId = ?";
+	private static List<Movie> movies = new ArrayList<>();
+	
+	List<Movie> movList = new ArrayList<Movie>();
 	
 	Connection con=DbConnection.getConnection();
 	public List<Movie> getAllMovies() {
 		
-		 List<Movie> movList = new ArrayList<Movie>();
+		 
 	        try {
 	        	
 	            PreparedStatement pstmt = con.prepareStatement(Select_QUERY);
@@ -100,22 +104,59 @@ public  class MovieDao implements MoviesDaoIntrfc{
 	 * } catch (SQLException e) { e.printStackTrace(); }
 	 * }
 	 */
-	/*
-	 * public Movie getMovieById(int movieId) {
-	 * 
-	 * return null; }
-	 */
 	@Override
-	public void DeleteMovies(Movie mov) {
-		 try {
-	            PreparedStatement pstmt = con.prepareStatement(Delete_QUERY);
-	            pstmt.setInt(1, mov.getMovie_Id());
-	            pstmt.executeUpdate();
-	            con.close();
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-		
+	public Movie getMovieById(int movieId) {
+        Connection con = DbConnection.getConnection();
+        Movie movie = null;
+
+        try {
+            PreparedStatement pstmt = con.prepareStatement(SELECT_BY_ID_QUERY);
+            pstmt.setInt(1, movieId);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                movie = new Movie();
+                movie.setMovie_Id(rs.getInt("movieId"));
+                movie.setTheater_Id(rs.getInt("theaterId"));
+                movie.setMovie_Name(rs.getString("movie_name"));
+                movie.setMovie_Director(rs.getString("director"));
+                movie.setMovie_Release_Date(rs.getDate("releasedate"));
+                movie.setMovie_Casts(rs.getString("casts"));
+                movie.setMovie_Description(rs.getString("description"));
+                movie.setMovie_Poster(rs.getString("poster"));
+                movie.setMovie_Duration(rs.getString("duration"));
+                movie.setTrailerlink(rs.getString("trailerlink"));
+                movie.setGenre(rs.getString("genre"));
+
+                Theater theater = new Theater();
+                movie.setTheater(theater);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return movie;
+    }
+
+	@Override
+	public boolean DeleteMovies(int movieId) {
+		boolean rowDeleted = false;
+        try {
+            PreparedStatement pstmt = con.prepareStatement(Delete_QUERY);
+            pstmt.setInt(1, movieId);
+            rowDeleted = pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowDeleted;
+    
 	}
 	@Override
 	public boolean UpadateMovies(Movie mov) {
@@ -149,6 +190,20 @@ public  class MovieDao implements MoviesDaoIntrfc{
         }
 
         return false;
+	}
+	@Override
+	public List<Movie> SearchMovies(String keyword) {
+		List<Movie> results = new ArrayList<>();
+
+        for (Movie movie : movList) {
+            if (movie.getMovie_Name().toLowerCase().contains(keyword.toLowerCase()) ||
+                movie.getGenre().toLowerCase().contains(keyword.toLowerCase())) {
+                results.add(movie);
+            }
+        }
+
+        return results;
+		
 	}
 
 }

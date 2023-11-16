@@ -114,7 +114,8 @@ nav ul li a:hover {
 				<th scope="col">Casts</th>
 				<th scope="col">Description</th>
 				<th scope="col">Duration</th>
-				<th scope="col" style="width: 14%;">Action</th>
+				<th scope="col"></th>
+				<th scope="col"></th>
 			</tr>
 
 			<% List<Movie> movies = (List<Movie>) request.getAttribute("movies");
@@ -128,11 +129,12 @@ nav ul li a:hover {
 				<td><%= movie.getMovie_Description() %></td>
 				<td><%= movie.getMovie_Duration() %></td>
 				<td>
-        			<a href="/MovieTickeReservation/EditMovie.jsp?movieId=<%= movie.getMovie_Id() %>">
-            		<button type="button" class="btn btn-success">Edit</button>
-        		</a>
-        			<a href="/MovieTickeReservation/DeleteMovieServlet?movieId=<%= movie.getMovie_Id() %>">
-            		<button type="button" class="btn btn-danger">Delete</button>
+        			<a href="EditMovie.jsp?movieID=<%= movie.getMovie_Id() %>"><button type="button" class="btn btn-success">Edit</button></a>
+            		
+        		</a></td>
+        		<td>
+        			<form action="DeleteMovieServlet?movieId=<%= movie.getMovie_Id() %>" method="post">
+            		<button type="submit" class="btn btn-danger" name="delete" id="<%= movie.getMovie_Id() %>">Delete</button>
         		</a>
     			</td>
 			</tr>

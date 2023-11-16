@@ -54,7 +54,9 @@ public class EditMovieServlet extends HttpServlet {
         boolean updated = movieDao.UpadateMovies(mov);
 
         if (updated) {
-            response.sendRedirect("viewmovies.jsp");
+        	 request.setAttribute("movie", mov);
+             RequestDispatcher dispatcher = request.getRequestDispatcher("EditMovie.jsp");
+             dispatcher.forward(request, response);
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
             dispatcher.forward(request, response);

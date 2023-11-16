@@ -8,6 +8,7 @@ public interface MoviesDaoIntrfc {
 	public List<Movie> getAllMovies();	
 	void InsertMovies(Movie mov);
 	boolean UpadateMovies(Movie mov);
-	void DeleteMovies(Movie mov);
-	
+	boolean DeleteMovies(int movieId);
+	public Movie getMovieById(int movieId);	
+	List<Movie> SearchMovies(String keyword);
 }

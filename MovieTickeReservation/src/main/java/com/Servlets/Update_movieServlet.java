@@ -34,51 +34,43 @@ public class Update_movieServlet extends HttpServlet {
 //using dopost for updating and deleting
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        
-        
+    	int movieId = Integer.parseInt(request.getParameter("movieId"));
+        String movieName = request.getParameter("movieName");
+        String director = request.getParameter("director");
+        String releasedateStr = request.getParameter("releasedate");
+        String casts = request.getParameter("casts");
+        String description = request.getParameter("description");
+        String duration = request.getParameter("duration");
+        String trailerlink = request.getParameter("trailerlink");
+        String genre = request.getParameter("genre");
 
-        String action = request.getParameter("action"); 
-
-        if ("update".equals(action)) {
-           
-            int movieId = Integer.parseInt(request.getParameter("movieId"));
-            
-            
-                MovieDao movieDao = new MovieDao();
-                Movie existingMovie = movieDao.getMovieById(movieId);
-
-                existingMovie.setMovie_Name(request.getParameter("movieName"));
-                existingMovie.setMovie_Director(request.getParameter("director"));
-                String releaseDateStr = request.getParameter("movie_Release_Date");
-                try {
-                java.util.Date releaseDate = new SimpleDateFormat("yyyy-MM-dd").parse(releaseDateStr);
-                existingMovie.setMovie_Release_Date(new Date(releaseDate.getTime()));
-                } catch (ParseException e)
-                {
-                    e.printStackTrace(); 
-                }
-                existingMovie.setMovie_Casts(request.getParameter("movie_Casts"));
-                existingMovie.setMovie_Description(request.getParameter("movie_Description"));
-                existingMovie.setMovie_Poster(request.getParameter("movie_Poster"));
-                existingMovie.setMovie_Duration(request.getParameter("movie_Duration"));
-                existingMovie.setTrailerlink(request.getParameter("trailerlink"));
-                existingMovie.setGenre(request.getParameter("genre"));
-
-                // Now, update the movie in the db
-                movieDao.UpadateMovies(existingMovie);
-            }
-        else if ("delete".equals(action)) {
-            int movieId = Integer.parseInt(request.getParameter("movieId"));
-            MovieDao movieDao = new MovieDao();
-            movieDao.DeleteMovies(movieId);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date releasedate = null;
+        try {
+            java.util.Date parsedDate = dateFormat.parse(releasedateStr);
+            releasedate = new Date(parsedDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        // redirect to movies
-    try {
-        response.sendRedirect(request.getContextPath() + "/Update_movieServlet");
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
 
+        Movie updatedMovie = new Movie();
+        updatedMovie.setMovie_Id(movieId);
+        updatedMovie.setMovie_Name(movieName);
+        updatedMovie.setMovie_Director(director);
+        updatedMovie.setMovie_Release_Date(releasedate);
+        updatedMovie.setMovie_Casts(casts);
+        updatedMovie.setMovie_Description(description);
+        updatedMovie.setMovie_Duration(duration);
+        updatedMovie.setTrailerlink(trailerlink);
+        updatedMovie.setGenre(genre);
 
-    
+        MovieDao movieDao = new MovieDao();
+        boolean success = movieDao.UpadateMovies(updatedMovie);
+
+        if (success) {
+            response.sendRedirect("/MovieTickeReservation/viewmovies");
+        } else {
+            response.sendRedirect("Error.jsp");
+        }
     }
 }

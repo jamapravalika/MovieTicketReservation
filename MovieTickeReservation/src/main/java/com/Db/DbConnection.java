@@ -12,7 +12,7 @@ public class DbConnection {
     public static Connection getConnection() {
         Connection con = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver"); // Loading driver is unnecessary in newer versions
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             System.out.println("Connection Successful.");
         } catch (SQLException | ClassNotFoundException e) {

@@ -47,7 +47,8 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex" action="Search">
+      <form class="d-flex" action="SearchServlet" method="get">
+      	<label for="keyword">Search:</label>
         <input class="form-control me-2" type="text" placeholder="Search">
         <i class="fas fa-search"></i>
       </form>
