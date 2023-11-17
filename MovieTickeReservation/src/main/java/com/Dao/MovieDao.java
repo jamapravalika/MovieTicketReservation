@@ -92,18 +92,6 @@ public  class MovieDao implements MoviesDaoIntrfc{
 
 	}
 
-	
-
-	/*
-	 * public void DeleteMovies(Movie mov) {
-	 * 
-	 * try { mov = new Movie(); PreparedStatement pstmt =
-	 * con.prepareStatement(Delete_QUERY); pstmt.setInt(1,mov.getMovie_Id());
-	 * pstmt.executeUpdate();
-	 * 
-	 * } catch (SQLException e) { e.printStackTrace(); }
-	 * }
-	 */
 	@Override
 	public Movie getMovieById(int movieId) {
         Connection con = DbConnection.getConnection();

@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Dao.MovieDao;
+
 /**
  * Servlet implementation class DeleteMovieServlet
  */
@@ -34,6 +36,19 @@ public class DeleteMovieServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.print("delete");
-	}
+		String movieid =request.getParameter("movieId");
+		Integer movid=Integer.parseInt(movieid);
+		
+		System.out.print(movid);
+		try {
+		MovieDao movieDao = new MovieDao();
+		movieDao.DeleteMovies(movid);
+		response.sendRedirect("viewmovies.jsp");
+	 } catch (Exception e) {
+         e.printStackTrace();
+         response.sendRedirect("Error.jsp");
+     }
+ }
+	
 
 }
