@@ -129,13 +129,13 @@ public class BookingDAO implements BookingDAOIntr {
 
 	        while (result.next()) {
 	        	Bookings booking = new Bookings();
-	            booking.setUseremail(result.getString("useremail"));  // Use column name
-	            booking.setMovieName(result.getString("MovieName"));  // Use column name
-	            booking.setTheaterName(result.getString("TheaterName"));  // Use column name
+	            booking.setUseremail(result.getString("useremail")); 
+	            booking.setMovieName(result.getString("MovieName")); 
+	            booking.setTheaterName(result.getString("TheaterName"));
 	            booking.setShowTime(result.getTime("ShowTime"));
-	            booking.setQuantity(result.getInt("quantity"));  // Use column name
-	            booking.setTotalPrice(result.getFloat("totalPrice"));  // Use column name
-	            booking.setBookingDate(result.getTimestamp("bookingDate"));  // Use column name
+	            booking.setQuantity(result.getInt("quantity"));
+	            booking.setTotalPrice(result.getFloat("totalPrice")); 
+	            booking.setBookingDate(result.getTimestamp("bookingDate")); 
 	            bookings.add(booking);
 	        }
 

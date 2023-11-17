@@ -18,13 +18,14 @@
     <servlet-name>DisplayMovies</servlet-name>
     <servlet-class>com.Servlets.DisplayMovies</servlet-class>
 </servlet>
+
 <servlet-mapping>
     <servlet-name>DisplayMovies</servlet-name>
     <url-pattern>/DisplayMovies</url-pattern>
 </servlet-mapping>
  <servlet>
         <servlet-name>BookingServlet</servlet-name>
-        <servlet-class>com.example.BookingServlet</servlet-class>
+        <servlet-class>com.Servlets.BookingServlet</servlet-class>
     </servlet>
  <servlet>
  	<description>
@@ -144,8 +145,7 @@
  			<servlet-name>DeleteMovieServlet</servlet-name>
  			<servlet-class>com.Servlets.DeleteMovieServlet</servlet-class>
  		</servlet>
-
-    
+ 		    
     <servlet-mapping>
         <servlet-name>BookingServlet</servlet-name>
         <url-pattern>/booking</url-pattern>
@@ -220,5 +220,6 @@
 		<servlet-name>DeleteMovieServlet</servlet-name>
 		<url-pattern>/DeleteMovieServlet</url-pattern>
 	</servlet-mapping>
+
     
 </web-app>

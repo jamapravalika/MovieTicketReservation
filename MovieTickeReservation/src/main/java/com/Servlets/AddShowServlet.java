@@ -19,7 +19,6 @@ import com.Model.Theater;
 /**
  * Servlet implementation class AddShowServlet
  */
-@WebServlet("/viewshowtime")
 public class AddShowServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -53,14 +52,12 @@ public class AddShowServlet extends HttpServlet {
         String startTimeStr = request.getParameter("Start_Time");
         String endTimeStr = request.getParameter("End_Time");
 
-        // Check if theater_id parameter is not null
         String theaterIdParameter = request.getParameter("theater_id");
         int theater = (theaterIdParameter != null && !theaterIdParameter.isEmpty())
                 ? Integer.parseInt(theaterIdParameter)
                 : 0;
 
         try {
-            // Parse Time from String
             Time start = Time.valueOf(startTimeStr + ":00");
             Time end = Time.valueOf(endTimeStr + ":00");
 
@@ -77,7 +74,7 @@ public class AddShowServlet extends HttpServlet {
 
             response.sendRedirect("viewshowtime.jsp");
         } catch (IllegalArgumentException e) {
-            e.printStackTrace(); // Log the exception or handle it appropriately
+            e.printStackTrace(); 
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid time format. Please use HH:mm");
         }
 	}

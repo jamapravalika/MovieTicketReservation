@@ -89,9 +89,9 @@ nav ul li a:hover {
     		View
   		</button>
   		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    		<a href="/MovieTickeReservation/viewmovies"><button class="dropdown-item" type="button">Movies</button></a>
-    		<a href="/MovieTickeReservation/viewTheater"><button class="dropdown-item" type="button">Theaters</button></a>
-    		<a href="/MovieTickeReservation/viewshowtime"><button class="dropdown-item" type="button">Show Timings</button></a>
+    		<a href="/MovieTicketReservation/viewmovies"><button class="dropdown-item" type="button">Movies</button></a>
+    		<a href="/MovieTicketReservation/viewTheater"><button class="dropdown-item" type="button">Theaters</button></a>
+    		<a href="/MovieTicketReservation/viewshowtime"><button class="dropdown-item" type="button">Show Timings</button></a>
   		</div>
 		</div>
 		</li>

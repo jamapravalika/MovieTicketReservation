@@ -67,7 +67,7 @@ public class MovieServlet extends HttpServlet {
         
 	
 		 String uploadPath =
-				" C:/Users/glimp/git/MovieTicketReservation11/MovieTickeReservation/src/main/webapp/images/"
+				" C:/Users/glimp/git/MovieTicketReservation11/MovieTicketReservation/src/main/webapp/images/"
 				 		 + imageFileName;
 		 
         
@@ -137,7 +137,7 @@ public class MovieServlet extends HttpServlet {
             }
         }
 
-        response.sendRedirect("/MovieTickeReservation/viewmovies");
+        response.sendRedirect("/MovieTicketReservation/viewmovies");
     }
     
     private String getSubmittedFileName(Part part) {

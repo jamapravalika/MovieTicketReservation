@@ -42,7 +42,7 @@ public class RemoveMoviesServlet extends HttpServlet {
 		        MovieDao movieDao = new MovieDao();
 		        movieDao.DeleteMovies(movieId);
 
-		        response.sendRedirect("/MovieTickeReservation/MoviesPage1");
+		        response.sendRedirect("/MovieTicketReservation/MoviesPage1");
 		    }
 		
 

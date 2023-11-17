@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.Dao.MovieDao;
 import com.Model.Movie;
 
-@WebServlet("/Update_movieServlet") 
 public class Update_movieServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -68,7 +67,7 @@ public class Update_movieServlet extends HttpServlet {
         boolean success = movieDao.UpadateMovies(updatedMovie);
 
         if (success) {
-            response.sendRedirect("/MovieTickeReservation/viewmovies");
+            response.sendRedirect("/MovieTicketReservation/viewmovies");
         } else {
             response.sendRedirect("Error.jsp");
         }

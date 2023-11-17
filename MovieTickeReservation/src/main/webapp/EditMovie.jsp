@@ -22,6 +22,8 @@
 </head>
 
 <body>
+
+
     <h1>Edit Movie</h1>
 <div class="container" style="max-width: 660px;">
     <form action="Update_movieServlet" method="post">
@@ -70,6 +72,7 @@
         
     </form>
     </div>
+
 </body>
 
 </html>
