@@ -109,7 +109,7 @@
             <div class="card card-body">
               <a class="dropdown-item" href="/MovieTicketReservation/viewmovies"><i class="fa-solid fa-clapperboard fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Movies</a>
               <a class="dropdown-item" href="/MovieTicketReservation/viewTheater"><i class="fa-solid fa-masks-theater fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Theaters</a>
-              <a class="dropdown-item" href="/MovieTicketReservation/viewshowtime"><i class="fa-sharp fa-regular fa-clock fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Show Timings</a>
+              <a class="dropdown-item" href="/MovieTicketReservation/AddShowServlet"><i class="fa-sharp fa-regular fa-clock fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Show Timings</a>
             </div>
           </div>
           <!-- <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> -->

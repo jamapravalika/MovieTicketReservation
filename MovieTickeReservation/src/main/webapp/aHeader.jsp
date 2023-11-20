@@ -94,12 +94,12 @@
           <span class="nav_logo-name"><h4 style="margin-top: 30%; margin-left: 30%;"><bold style="color: black;">Admin</bold></h4></span>
         </a>
         <div class="nav_list">
-          <a href="#" class="nav_link active"> <i class='fas fa-home nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-          <a href="#" class="nav_link"> <i class='fas fa-film nav_icon'></i> <span class="nav_name">Add Movies</span> </a>
-          <a href="#" class="nav_link"> <i class='fas fa-building nav_icon'></i> <span class="nav_name">Add Theaters</span></a>
-          <a href="#" class="nav_link"> <i class='fas fa-clock nav_icon'></i> <span class="nav_name">Add ShowTimings</span></a>
-          <a href="#" class="nav_link"> <i class='fas fa-users nav_icon'></i> <span class="nav_name">Users</span></a>
-          <a href="#" class="nav_link"> <i class='bx bx-cart nav_icon'></i> <span class="nav_name">Bookings</span></a>
+          <a href="adminHome.jsp" class="nav_link active"> <i class='fas fa-home nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+          <a href="AddMovies.jsp" class="nav_link"> <i class='fas fa-film nav_icon'></i> <span class="nav_name">Add Movies</span> </a>
+          <a href="theater.jsp" class="nav_link"> <i class='fas fa-building nav_icon'></i> <span class="nav_name">Add Theaters</span></a>
+          <a href="addShowtiming.jsp" class="nav_link"> <i class='fas fa-clock nav_icon'></i> <span class="nav_name">Add ShowTimings</span></a>
+          <a href="/MovieTicketReservation/UserTable" class="nav_link"> <i class='fas fa-users nav_icon'></i> <span class="nav_name">Users</span></a>
+          <a href="/MovieTicketReservation/Booking" class="nav_link"> <i class='bx bx-cart nav_icon'></i> <span class="nav_name">Bookings</span></a>
 
           <a href="#" class="nav_link" role="button" data-bs-toggle="collapse" data-bs-target="#collapseView" aria-expanded="false" aria-controls="collapseView">
             <i class="fa-solid fa-eye"></i>
@@ -107,9 +107,9 @@
           </a>
           <div class="collapse" id="collapseView">
             <div class="card card-body">
-              <a class="dropdown-item" href="#"><i class="fa-solid fa-clapperboard fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Movies</a>
-              <a class="dropdown-item" href="#"><i class="fa-solid fa-masks-theater fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Theaters</a>
-              <a class="dropdown-item" href="#"><i class="fa-sharp fa-regular fa-clock fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Show Timings</a>
+              <a class="dropdown-item" href="/MovieTicketReservation/viewmovies"><i class="fa-solid fa-clapperboard fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Movies</a>
+              <a class="dropdown-item" href="/MovieTicketReservation/viewTheater"><i class="fa-solid fa-masks-theater fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Theaters</a>
+              <a class="dropdown-item" href="/MovieTicketReservation/AddShowServlet"><i class="fa-sharp fa-regular fa-clock fa-spin" style="margin-right: 8%; margin-left: 1%;"></i> Show Timings</a>
             </div>
           </div>
           <!-- <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> -->

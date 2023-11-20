@@ -68,7 +68,7 @@ public class ShowTimeDao implements ShowTimingIntrf{
 		
 		List<ShowTimes> show = new ArrayList<>();
         
-        final String select_query = "SELECT * FROM 	SHOWTIMES";
+        final String select_query = "SELECT * FROM 	showtimes";
         
         try {
             Statement statement = con.createStatement();
@@ -92,9 +92,9 @@ public class ShowTimeDao implements ShowTimingIntrf{
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-        	System.out.println("Finally Block");
-    	}
+        }  finally {
+                System.out.println("Finally Block in ListAllShowTime method");
+            }
 		return show;
 	}
 	

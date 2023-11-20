@@ -15,7 +15,7 @@ body {
 
 
         .container {
-             
+             margin-top:20%;
     max-width: 660px;
             margin: 20px auto;
             padding: 20px;
@@ -59,7 +59,24 @@ body {
             cursor: pointer;
             transition: background-color 0.2s;
         }
+		  .dropdown-item {
+    color: #fff;
+    transition: 0.3s;
+    padding: 7px;
+  }
 
+  .dropdown-item:hover {
+    background-color: #fff;
+    color: #a43014;
+    border-radius: 100px;
+    padding: 9px;
+  }
+  a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+    }
         .btn-primary:hover {
             background-color: #a10303c9;
         }

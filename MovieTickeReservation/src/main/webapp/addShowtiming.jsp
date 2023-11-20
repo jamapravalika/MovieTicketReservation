@@ -16,6 +16,9 @@
             position: static;
             margin-top: 4px;
         }
+        a:hover {
+      text-decoration: none;
+    }
     </style>
 </head>
 <body>

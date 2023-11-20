@@ -179,9 +179,10 @@
     	<url-pattern>/ShowServlet</url-pattern>
     </servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>AddShowServlet</servlet-name>
-		<url-pattern>/AddShowServlet</url-pattern>
-	</servlet-mapping>
+    <servlet-name>AddShowServlet</servlet-name>
+    <url-pattern>/AddShowServlet</url-pattern>
+</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>UpdateShowServlet</servlet-name>
 		<url-pattern>/UpdateShowServlet</url-pattern>
