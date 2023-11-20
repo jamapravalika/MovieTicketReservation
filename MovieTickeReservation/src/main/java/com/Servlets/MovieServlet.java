@@ -67,7 +67,7 @@ public class MovieServlet extends HttpServlet {
         
 	
 		 String uploadPath =
-				" C:/Users/glimp/git/MovieTicketReservation11/MovieTicketReservation/src/main/webapp/images/"
+				"C:/Users/Pravalika/git/MovieTicketReservation/MovieTickeReservation/src/main/webapp/images/"
 				 		 + imageFileName;
 		 
         

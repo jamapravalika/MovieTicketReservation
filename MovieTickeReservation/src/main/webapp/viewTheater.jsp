@@ -35,68 +35,13 @@ body {
 	padding :0 5%;
 }
 
-nav{
-	text-align: center;
-	background-color: #333;
-}
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: inline-block;
-    justify-content: center;
-}
 
-nav ul li {
-    float: left;
-    align: right;
-    margin: 0 20px;
-}
-
-nav ul li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-nav ul li a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-  .dropdown, .dropup {
-    position: static;
-    margin-top:4px;
-}
 
 </style>
 
 <body>
 	<!-- header -->
-	 <nav>
-      <ul>
-        <li><a href="AdmHome.jsp"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="AddMovies.jsp"><i class="fa fa-film"></i> Add Movies</a></li>
-        <li><a href="theater.jsp"><i class="fa fa-building"></i> Theaters</a></li>
-        <li><a href="addShowtiming.jsp"><i class="fa fa-building"></i> Show Timings</a></li>
-        <li><a href="/MovieTickeReservation/UserTable"><i class="fa fa-users"></i> Users</a></li>
-         <li class="nav-item dropdown">
-        <div class="dropdown">
-  			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    		View
-  		</button>
-  		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    		<a href="/MovieTicketReservation/viewmovies"><button class="dropdown-item" type="button">Movies</button></a>
-    		<a href="/MovieTicketReservation/viewTheater"><button class="dropdown-item" type="button">Theaters</button></a>
-    		<a href="/MovieTicketReservation/viewshowtime"><button class="dropdown-item" type="button">Show Timings</button></a>
-  		</div>
-		</div>
-		</li>
-      </ul>
-    </nav>
+	 <%@ include file="aHeader.jsp" %>
 	
 
    <h1>List of Movies</h1>

@@ -61,7 +61,7 @@
     		View
   		</button>
   		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    		<a href="/MovieTicketReservation/DisplayMovies"><button class="dropdown-item" type="button">Movies</button></a>
+    		<a href="/MovieTicketReservation/viewmovies"><button class="dropdown-item" type="button">Movies</button></a>
     		<a href="/MovieTicketReservation/viewTheater"><button class="dropdown-item" type="button">Theaters</button></a>
     		<a href="/MovieTicketReservation/viewshowtime"><button class="dropdown-item" type="button">Show Timings</button></a>
   		</div>

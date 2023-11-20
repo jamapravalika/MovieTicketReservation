@@ -15,7 +15,6 @@
         </select>
     </div>
     <div class="banner">
-        <!-- <img src="bg1.jpg" alt="Movie Banner"> -->
         <div class="banner-content">
             <h1>Discover the World of Cinema</h1>
             <p>Experience the thrill of the silver screen like never before.</p>
@@ -31,10 +30,9 @@
         document.getElementById("bookButton").addEventListener("click", function () {
             var role = document.getElementById("role").value;
             if (role === "admin") {
-                window.location.href = "AdmHome.jsp"; // Replace with the actual URL of your admin home page
+                window.location.href = "adminHome.jsp"; 
             } else if (role === "user") {
-                // Redirect to the user home page
-                window.location.href = "login.jsp"; // Replace with the actual URL of your user home page
+                window.location.href = "login.jsp"; 
             }
         });
     </script>

@@ -30,7 +30,7 @@ public class Update_movieServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("EditMovie.jsp");
         dispatcher.forward(request, response);
     }
-//using dopost for updating and deleting
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        
     	int movieId = Integer.parseInt(request.getParameter("movieId"));

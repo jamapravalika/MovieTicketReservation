@@ -21,7 +21,7 @@
 
 <servlet-mapping>
     <servlet-name>DisplayMovies</servlet-name>
-    <url-pattern>/DisplayMovies</url-pattern>
+    <url-pattern>/viewmovies</url-pattern>
 </servlet-mapping>
  <servlet>
         <servlet-name>BookingServlet</servlet-name>
@@ -134,6 +134,13 @@
  		<servlet>
  			<description>
  			</description>
+ 			<display-name>Update_movieServlet</display-name>
+ 			<servlet-name>Update_movieServlet</servlet-name>
+ 			<servlet-class>com.Servlets.Update_movieServlet</servlet-class>
+ 		</servlet>
+ 		<servlet>
+ 			<description>
+ 			</description>
  			<display-name>SearchServlet</display-name>
  			<servlet-name>SearchServlet</servlet-name>
  			<servlet-class>com.Servlets.SearchServlet</servlet-class>
@@ -203,7 +210,10 @@
 		<servlet-name>EditServlet</servlet-name>
 		<url-pattern>/Edit</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>Update_movieServlet</servlet-name>
+		<url-pattern>/Update_movieServlet</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>RemoveServlet</servlet-name>
 		<url-pattern>/RemoveServlet</url-pattern>
