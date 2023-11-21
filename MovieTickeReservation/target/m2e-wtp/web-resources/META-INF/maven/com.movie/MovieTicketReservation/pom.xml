@@ -41,7 +41,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.27</version>
+            <version>8.0.33</version>
         </dependency>
         
         <dependency>
@@ -50,6 +50,7 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
     
     <build>
@@ -64,7 +65,7 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-            
+
         </plugins>
     </build>
 </project>
