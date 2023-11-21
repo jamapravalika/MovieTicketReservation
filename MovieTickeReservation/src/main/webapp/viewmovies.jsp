@@ -52,7 +52,7 @@ body {
 
 	<h1>List of Movies</h1>
 
-	<table class="table" style="max-width: 80%; margin: auto;">
+	<table class="table" style="max-width: 94%; margin: auto; margin-top: 5%;">
 		<thead class="table">
 			<tr class="table-danger">
 				<th scope="col">Movie Name</th>
@@ -61,8 +61,7 @@ body {
 				<th scope="col">Casts</th>
 				<th scope="col">Description</th>
 				<th scope="col">Duration</th>
-				<th scope="col"></th>
-				<th scope="col"></th>
+				<th scope="col" style="width: 182px;">Action</th>
 			</tr>
 
 			<% List<Movie> movies = (List<Movie>) request.getAttribute("movies");
@@ -76,14 +75,18 @@ body {
 				<td><%= movie.getMovie_Description() %></td>
 				<td><%= movie.getMovie_Duration() %></td>
 				<td>
-        			<a href="EditMovie.jsp?movieID=<%= movie.getMovie_Id() %>"><button type="button" class="btn btn-success">Edit</button></a>
-            		
-        		</a></td>
-        		<td>
-        			<form action="DeleteMovieServlet?movieId=<%= movie.getMovie_Id() %>" method="post">
-            		<button type="submit" class="btn btn-danger" name="delete" id="<%= movie.getMovie_Id() %>">Delete</button>
-        		</a>
-    			</td>
+    <div style="display: inline-block; margin-right: 5px;">
+        <a href="EditMovie.jsp?movieID=<%= movie.getMovie_Id() %>">
+            <button type="button" class="btn btn-success">Edit</button>
+        </a>
+    </div>
+    
+    <div style="display: inline-block;">
+        <form action="DeleteMovieServlet?movieId=<%= movie.getMovie_Id() %>" method="post">
+            <button type="submit" class="btn btn-danger" name="delete" id="<%= movie.getMovie_Id() %>">Delete</button>
+        </form>
+    </div>
+</td>
 			</tr>
 			<% } 
    

@@ -44,7 +44,7 @@
                     <input type="number" class="form-control" id="seatingCapacity" name="seatingCapacity" placeholder="Enter seating capacity">
                 </div>
                 <div class="buttons">
-                    <button type="submit" class="btn btn-primary"> Add Theater</button>
+                    <button type="submit" class="btn btn-primary" style="color: #fff;"> Add Theater</button>
                 </div>
             </form>
         </div>

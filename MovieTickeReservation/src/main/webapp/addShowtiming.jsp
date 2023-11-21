@@ -26,7 +26,7 @@
     <section id="movies">
         <h2>Show Timings</h2>
         <a>
-            <div class="container" style="max-width: 660px;">
+            <div class="container" style="max-width: 660px; margin-top: 5%;">
                 <h2 style="text-align: center; padding: 0">Add Show Timings</h2>
                 <br>
                 </br>
@@ -46,7 +46,7 @@
                         <input type="number" class="form-control" name="theater_id" placeholder="Theater ID" required>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Add Show Time</button>
+                        <button type="submit" class="btn btn-primary" style="color: #fff;">Add Show Time</button>
                     </div>
                 </form>
             </div>

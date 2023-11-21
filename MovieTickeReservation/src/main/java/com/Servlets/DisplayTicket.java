@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Dao.BookingDAO;
+import com.Dao.BookingDAOIntr;
 import com.Dao.MovieDao;
+import com.Model.Bookings;
 import com.Model.Movie;
 
 /**
@@ -31,12 +34,14 @@ public class DisplayTicket extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		MovieDao movieDao = new MovieDao();
-	    List<Movie> movies = movieDao.getAllMovies();
-	    	    
-	    request.setAttribute("movies", movies);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("ticket.jsp");
-	    dispatcher.forward(request, response);
+		BookingDAOIntr bookingDAO = new BookingDAO();
+        List<Bookings> bookedTickets = bookingDAO.ShowBookingByUserEmail(request);
+
+        // Set the bookedTickets attribute in the request
+        request.setAttribute("bookings", bookedTickets);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("ticket.jsp");
+        dispatcher.forward(request, response);
 	}
 
 	/**

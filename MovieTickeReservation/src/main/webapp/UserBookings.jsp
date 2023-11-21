@@ -17,20 +17,18 @@
     <h1>Booked Movie Tickets</h1>
     <table class="table table-hover">
         <tr>
-        	<th></th>
-            <th>User Email</th>
             <th>Movie Name</th>
             <th>Theater Name</th>
             <th>Show Time</th>
             <th>Quantity</th>
             <th>Total Price</th>
             <th>Booking Date</th>
+            <th></th>
         </tr>
         <% SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss"); %>
         <% for (Bookings booking : (List<Bookings>) request.getAttribute("bookings")) { %>
             <tr>
-            	<td><%= booking.getMovie_Poster() %></td>
-                <td><%= booking.getUseremail() %></td>
+            	<td><img src="images/<%= booking.getMoviePoster() %>" alt="" style="width: 80px; height: 100px;"></td>
                 <td><%= booking.getMovieName() %></td>
                 <td><%= booking.getTheaterName() %></td>
                 <td><%= timeFormat.format(booking.getShowTime()) %></td>

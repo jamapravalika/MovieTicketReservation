@@ -63,10 +63,11 @@ public class BookingServlet extends HttpServlet {
 
 	    int quantity = Integer.parseInt(request.getParameter("quantity"));
 	    float totalPrice = calculateTotalPrice(quantity);
-
+	    String MoviePoster = request.getParameter("MovieImage");
 
 	    Date bookingDate = new Date(System.currentTimeMillis());
-
+	    
+	    System.out.println("moviePoster : "+ MoviePoster);
 	    System.out.println("useremail : "+ useremail);
 	    System.out.println("movieName : "+ movieName);
 	    System.out.println("theaterName : "+ theaterName);
@@ -76,7 +77,7 @@ public class BookingServlet extends HttpServlet {
 	    System.out.println("bookingDate : "+ bookingDate);
 	    
 	    BookingDAO bookingDAO = new BookingDAO();
-        bookingDAO.createBooking(useremail, movieName, theaterName, quantity, startTime, totalPrice, bookingDate);
+        bookingDAO.createBooking(useremail, movieName, theaterName, quantity, startTime, totalPrice, bookingDate, MoviePoster);
 
 
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("TicketBook.jsp");

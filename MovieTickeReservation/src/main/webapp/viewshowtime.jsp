@@ -35,7 +35,7 @@
         List<ShowTimes> showList = (List<ShowTimes>) request.getAttribute("showList");
     %>
 <div>
-  <table class="table" style="max-width: 80%;margin: auto;">
+  <table class="table" style="max-width: 80%;margin: auto; margin-top: 5%;">
   <thead class="table">
     <tr class="table-danger">
         <th scope="col">ShowTime ID</th>

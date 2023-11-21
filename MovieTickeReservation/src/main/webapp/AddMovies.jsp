@@ -31,7 +31,7 @@
 
     <section id="movies">
         <h2>Movies</h2>
-        <div class="container" style="max-width: 660px;">
+        <div class="container" style="max-width: 660px; margin-top: 5%;">
             <h2 style="text-align: center; padding: 0">Add Movie</h2>
             <br></br>
             <!-- Add Movie Form -->
@@ -81,7 +81,7 @@
                 </div>
                 <div class="buttons">
                     <br>
-                    <button type="submit" class="btn btn-primary">Add Movie</button>
+                    <button type="submit" class="btn btn-primary" style="color: #fff;">Add Movie</button>
                 </div>
             </form>
         </div>

@@ -18,14 +18,14 @@ import com.Model.Bookings;
 
 public class BookingDAO implements BookingDAOIntr {
 
-	public void createBooking(String UserEmail, String MovieName,String TheaterName,int Quantity, Time startTime, float TotalPrice,Date BookingDate) {
+	public void createBooking(String UserEmail, String MovieName,String TheaterName,int Quantity, Time startTime, float TotalPrice,Date BookingDate, String MoviePoster) {
 		// TODO Auto-generated method stub
 		Connection conn = null;
         try {
             conn = DbConnection.getConnection();
             conn.setAutoCommit(false);  // Disable auto-commit to manage transactions
 
-            final String INSERT_QUERY = "INSERT INTO Bookings (useremail, MovieName, TheaterName, ShowTime,quantity, totalPrice, bookingDate) VALUES (?, ?, ?, ?, ?, ?,?);";
+            final String INSERT_QUERY = "INSERT INTO Bookings (useremail, MovieName, TheaterName, ShowTime,quantity, totalPrice, bookingDate, moviePoster) VALUES (?, ?, ?,?, ?, ?, ?,?);";
 
             try (PreparedStatement pstmt = conn.prepareStatement(INSERT_QUERY)) {
                 pstmt.setString(1, UserEmail);
@@ -35,6 +35,7 @@ public class BookingDAO implements BookingDAOIntr {
                 pstmt.setInt(5, Quantity);
                 pstmt.setFloat(6, TotalPrice);
                 pstmt.setTimestamp(7, new Timestamp(BookingDate.getTime()));
+                pstmt.setString(8, MoviePoster);
 
                 int rowsAffected = pstmt.executeUpdate();
                 System.out.println("ShowTime value to be inserted: " + startTime);
@@ -136,6 +137,7 @@ public class BookingDAO implements BookingDAOIntr {
 	            booking.setQuantity(result.getInt("quantity"));
 	            booking.setTotalPrice(result.getFloat("totalPrice")); 
 	            booking.setBookingDate(result.getTimestamp("bookingDate")); 
+	            booking.setMoviePoster(result.getString("moviePoster"));
 	            bookings.add(booking);
 	        }
 
@@ -147,6 +149,45 @@ public class BookingDAO implements BookingDAOIntr {
 	    }
 
 	    return bookings;
+	}
+	public List<Bookings> ShowBookingByUserEmail(HttpServletRequest request) {
+	    // TODO Auto-generated method stub
+		List<Bookings> bookedTickets = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+
+        try {
+            conn = DbConnection.getConnection();
+            String selectQuery = "SELECT * FROM Bookings WHERE useremail = ?";
+            pstmt = conn.prepareStatement(selectQuery);
+
+            String useremail = (String) request.getSession().getAttribute("useremail");
+            pstmt.setString(1, useremail);
+
+            result = pstmt.executeQuery();
+
+	        while (result.next()) {
+	        	Bookings booking = new Bookings();
+	            booking.setUseremail(result.getString("useremail")); 
+	            booking.setMovieName(result.getString("MovieName")); 
+	            booking.setTheaterName(result.getString("TheaterName"));
+	            booking.setShowTime(result.getTime("ShowTime"));
+	            booking.setQuantity(result.getInt("quantity"));
+	            booking.setTotalPrice(result.getFloat("totalPrice")); 
+	            booking.setBookingDate(result.getTimestamp("bookingDate")); 
+	            booking.setMoviePoster(result.getString("moviePoster"));
+	            bookedTickets.add(booking);
+	        }
+
+	        request.setAttribute("bookings", bookedTickets); 
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        System.out.println("Finally Block");
+	    }
+
+	    return bookedTickets;
 	}
 }
 

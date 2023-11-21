@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="com.Model.Movie" %> 
 <%@ page import="com.Model.Bookings" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,57 +17,43 @@
             <div class="ticket">
                 <div class="holes-top"></div>
                 <div class="title">
-                    <p class="cinema">MyShowz Entertainment</p>
-                    <p class="movie-title">Movie Name</p>
-                </div>
-                <div class="poster">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/25240/only-god-forgives.jpg"
-                        alt="Movie: Only God Forgives" />
+                <% SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss"); %>
+                    <% for (Bookings booking : (List<Bookings>) request.getAttribute("bookings")) { %>
+                    <H2 class="cinema"><%= booking.getTheaterName() %></H2>
+                    <p class="movie-title"><%= booking.getMovieName() %></p>
                 </div>
                 <div class="info">
-                    <%
-                        Movie movie = (Movie) request.getAttribute("movie");
-                    %>
-                    <%
-                        Bookings book = (Bookings) request.getAttribute("bookings");
-                        if (book != null) {
-                    %>
-                    <table class="info-table ticket-table">
-                        <tr>
-                            <th>SCREEN</th>
-                            <th>ROW</th>
-                            <th>SEAT</th>
-                        </tr>
-                        <tr>
-                            <td class="bigger">18</td>
-                            <td class="bigger">H</td>
-                            <td class="bigger">24</td>
-                        </tr>
-                    </table>
-                    <table class="info-table ticket-table">
-                        <tr>
-                            <th>PRICE</th>
-                            <th>DATE</th>
-                            <th>TIME</th>
-                        </tr>
-                        <tr>
-                            <td><%= book.getTotalPrice() %></td>
-                        </tr>
-                    </table>
-                    <%
-                        } else {
-                    %>
-                    <table class="info-table ticket-table">
-                        <tr>
-                            <th>ERROR</th>
-                        </tr>
-                        <tr>
-                            <td>Error: Booking information not available</td>
-                        </tr>
-                    </table>
-                    <%
-                        }
-                    %>
+                    
+                        <div class="poster">
+                            <img class="card-img-top custom-card-image" src="images/<%= booking.getMoviePoster() %>" alt="Card image" style="height: 190px; width: 280px; margin-left: 10%;">
+                        </div>
+                        <table class="info-table ticket-table">
+                            <tr>
+                                <th>Movie</th>
+                                <th>Slot</th>
+                                <th>SEATS</th>
+                            </tr>
+                            <br><br>
+                            
+                            <tr style="margin-top: 2%;">
+                                <td class="bigger"><%= booking.getMovieName() %></td>
+                                <td class="bigger"><%= timeFormat.format(booking.getShowTime()) %></td>
+                                <td class="bigger"><%= booking.getQuantity() %></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <table class="info-table ticket-table">
+                            <tr>
+                                <th>PRICE</th>
+                                <th>DATE</th>
+                            </tr>
+                            <tr>
+                                <td><%= booking.getTotalPrice() %></td>
+                                <td><%= booking.getBookingDate() %></td>
+                          
+                            </tr>
+                        </table>
+                    <% } %>
                 </div>
                 <div class="holes-lower"></div>
                 <div class="serial">
@@ -80,7 +67,7 @@
             </div>
         </div>
         <input type="button" name="previous-step" class="home-page-btn" value="Browse to Home Page"
-            onclick="location.href='index.jsp';" />
+            onclick="location.href='Home.jsp';" />
     </fieldset>
 </body>
 </html>

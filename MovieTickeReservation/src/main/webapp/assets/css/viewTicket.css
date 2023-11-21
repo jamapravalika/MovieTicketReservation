@@ -9,7 +9,12 @@ img {
   max-width: 100%;
   height: auto;
 }
-
+p{
+	align-items: center;
+}
+h2{
+	align-items: center;
+}
 .ticket {
   width: 400px;
   height: 775px;
@@ -118,8 +123,8 @@ img {
 }
 
 .ticket-table td {
-  width: 33%;
-  font-size: 26px;
+  width: 30%;
+  font-size: 18px;
 }
 
 .info-table th {
@@ -127,7 +132,7 @@ img {
 }
 
 .bigger {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .serial {
@@ -142,7 +147,7 @@ img {
 }
 
 .serial td {
-  width: 3px;
+  width: 2px;
   height: 50px;
 }
 

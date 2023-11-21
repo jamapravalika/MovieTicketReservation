@@ -62,7 +62,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-user"></i> Account</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Account</a></li>
-            <li><a class="dropdown-item" href="/MovieTicketReservation/Booking">History</a></li>
+            <li><a class="dropdown-item" href="/MovieTicketReservation/UserBookings">History</a></li>
             <li><a class="dropdown-item" href="login.jsp">Logout</a></li>
           </ul>
         </li>
@@ -117,7 +117,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="assets/images/KushiPos.jpg" alt="Image 3">
+                <img src="assets/images/KushiPos.avif" alt="Image 3">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Kushi</h3>
                     <p>A couple who are predicted to have a failed marriage, decide to become ideal 

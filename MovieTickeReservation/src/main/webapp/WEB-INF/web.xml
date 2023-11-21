@@ -152,6 +152,13 @@
  			<servlet-name>DeleteMovieServlet</servlet-name>
  			<servlet-class>com.Servlets.DeleteMovieServlet</servlet-class>
  		</servlet>
+ 		<servlet>
+ 			<description>
+ 			</description>
+ 			<display-name>UserBookings</display-name>
+ 			<servlet-name>UserBookings</servlet-name>
+ 			<servlet-class>com.Servlets.UserBookings</servlet-class>
+ 		</servlet>
  		    
     <servlet-mapping>
         <servlet-name>BookingServlet</servlet-name>
@@ -230,6 +237,10 @@
 	<servlet-mapping>
 		<servlet-name>DeleteMovieServlet</servlet-name>
 		<url-pattern>/DeleteMovieServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UserBookings</servlet-name>
+		<url-pattern>/UserBookings</url-pattern>
 	</servlet-mapping>
 
     

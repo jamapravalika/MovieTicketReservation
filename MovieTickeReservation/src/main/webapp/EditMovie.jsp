@@ -26,7 +26,7 @@
 
 <%@ include file="aHeader.jsp" %>
     <h1>Edit Movie</h1>
-<div class="container" style="max-width: 660px;">
+<div class="container" style="max-width: 660px; margin-top: 5%;">
     <form action="Update_movieServlet" method="post">
         <% 
         int movieID = Integer.parseInt(request.getParameter("movieID"));
@@ -69,7 +69,7 @@
             	<label for="genre">Genre:</label>
             	<input type="text" name="genre" value="<%= movie.getGenre() %>" required>
             </div>
-            <button type="submit" class="btn btn-primary">Update Movie</button>
+            <button type="submit" class="btn btn-primary" style="color: #fff;">Update Movie</button>
         
     </form>
     </div>

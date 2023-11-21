@@ -14,33 +14,31 @@ public class Bookings extends Movie{
 	private int quantity;
 	private float TotalPrice;
 	private Timestamp BookingDate;
+	private String MoviePoster;
 	private boolean confirmed;
+	public int getBookingId() {
+		return BookingId;
+	}
 	
 	public Bookings() {
 		super();
 	}
+
 	public Bookings(int bookingId, String useremail, String movieName, String theaterName, Time showTime, int quantity,
-			float totalPrice, Timestamp bookingDate, boolean confirmed) {
+			float totalPrice, Timestamp bookingDate, String moviePoster, boolean confirmed) {
 		super();
 		BookingId = bookingId;
 		Useremail = useremail;
 		MovieName = movieName;
 		TheaterName = theaterName;
 		ShowTime = showTime;
-		quantity = quantity;
+		this.quantity = quantity;
 		TotalPrice = totalPrice;
 		BookingDate = bookingDate;
+		MoviePoster = moviePoster;
 		this.confirmed = confirmed;
 	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public int getBookingId() {
-		return BookingId;
-	}
+
 	public void setBookingId(int bookingId) {
 		BookingId = bookingId;
 	}
@@ -68,6 +66,12 @@ public class Bookings extends Movie{
 	public void setShowTime(Time showTime) {
 		ShowTime = showTime;
 	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public float getTotalPrice() {
 		return TotalPrice;
 	}
@@ -80,6 +84,12 @@ public class Bookings extends Movie{
 	public void setBookingDate(Timestamp bookingDate) {
 		BookingDate = bookingDate;
 	}
+	public String getMoviePoster() {
+		return MoviePoster;
+	}
+	public void setMoviePoster(String moviePoster) {
+		MoviePoster = moviePoster;
+	}
 	public boolean isConfirmed() {
 		return confirmed;
 	}
@@ -90,8 +100,11 @@ public class Bookings extends Movie{
 	public String toString() {
 		return "Bookings [BookingId=" + BookingId + ", Useremail=" + Useremail + ", MovieName=" + MovieName
 				+ ", TheaterName=" + TheaterName + ", ShowTime=" + ShowTime + ", quantity=" + quantity + ", TotalPrice="
-				+ TotalPrice + ", BookingDate=" + BookingDate + ", confirmed=" + confirmed + "]";
+				+ TotalPrice + ", BookingDate=" + BookingDate + ", MoviePoster=" + MoviePoster + ", confirmed="
+				+ confirmed + "]";
 	}
+	
+	
 	
 }
 	

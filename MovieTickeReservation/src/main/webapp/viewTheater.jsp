@@ -18,6 +18,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Therters</title>
+<link rel="stylesheet" href="assets/css/adminHeader.css">
+    <link rel="stylesheet" type="text/css" href="AddMovies.css">
 <link rel="stylesheet" href="assets/css/style-starter.css">
 <link href="//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -46,7 +48,7 @@ body {
 
    <h1>List of Movies</h1>
     <div>
-  <table class="table" style="max-width: 80%;margin: auto;">
+  <table class="table" style="max-width: 80%;margin: auto; margin-top: 5%;">
   <thead class="table">
     <tr class="table-danger">
             <th scope="col">Theater Name</th>

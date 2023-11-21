@@ -34,7 +34,7 @@
           background-color: #ffffff;
           color: rgb(24, 26, 20);
         }
-            .dropdown-menu {
+  .dropdown-menu {
     background-color: #a43014;
   }
 
@@ -56,27 +56,16 @@
     .dropdown-menu {
       background-color: #a43014;
     }
-
-   
-
     .card {
       background-color: #a43014;
       color: #fff;
+      margin-top:10%;
     }
 
     .card.a:hover {
       color: #a43014;
     }
 
-
-  .card {
-    background-color: #a43014;
-    color: #fff;
-  }
-
-  .card.a:hover {
-    color: #a43014;
-  }
   
   </style>
 </head>
@@ -126,21 +115,42 @@
     <div class="dashboard-container">
       <div class="row">
         <div class="col-md-6">
-          <div class="card" style="background: linear-gradient(90deg, rgba(164, 8, 8, 0.8), rgba(0, 0, 0, 0.8) 87.19%);
+          <div class="card" style="background: linear-gradient(90deg, #a43014, rgba(0, 0, 0, 0.8) 157.19%);
           color: #fff;">
             <div class="card-body">
               <h5 class="card-title">Total Movies</h5>
               <p class="card-text">50</p>
-              <a href="#" class="btn btn-primary">View Details</a>
+              <a href="/MovieTicketReservation/viewmovies" class="btn btn-primary">View Details</a>
             </div>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="card" style="background: linear-gradient(90deg, rgba(164, 8, 8, 0.8), rgba(0, 0, 0, 0.8) 87.19%);color: #fff;">
+          <div class="card" style="background: linear-gradient(90deg, #a43014, rgba(0, 0, 0, 0.8) 157.19%);color: #fff;">
             <div class="card-body">
               <h5 class="card-title">Total Theaters</h5>
               <p class="card-text">20</p>
-              <a href="#" class="btn btn-primary">View Details</a>
+              <a href="/MovieTicketReservation/viewTheater" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card" style="background: linear-gradient(90deg, rgba(164, 8, 8, 0.8), rgba(0, 0, 0, 0.8) 157.19%);
+          color: #fff;">
+            <div class="card-body">
+              <h5 class="card-title">Total Time Slots</h5>
+              <p class="card-text">80</p>
+              <a href="/MovieTicketReservation/AddShowServlet" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card" style="background: linear-gradient(90deg, rgba(164, 8, 8, 0.8), rgba(0, 0, 0, 0.8) 157.19%);color: #fff;">
+            <div class="card-body">
+              <h5 class="card-title">Total Bookings</h5>
+              <p class="card-text">20</p>
+              <a href="/MovieTicketReservation/Booking" class="btn btn-primary">View Details</a>
             </div>
           </div>
         </div>

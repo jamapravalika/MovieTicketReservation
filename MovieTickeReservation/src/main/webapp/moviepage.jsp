@@ -76,6 +76,12 @@
 .def-number-input button:hover {
   background-color: #f1f1f1;
 } */
+@media (min-width: 768px) {
+  .col-md-3 {
+    flex: 0 0 auto !important;
+    width: 32% !important;
+  }
+ }
 .def-number {
 	aligh-items: "center";
 }
@@ -97,20 +103,6 @@
 		rgba(244, 11, 11, 0.8));
 }
 
-.timings input:checked+label {
-	background: rgb(285, 115, 115);
-	color: white;
-}
-
-.timings input:checked+label {
-	background: rgb(285, 115, 115);
-	color: white;
-}
-
-.timings input:checked+label {
-	background: rgb(285, 115, 115);
-	color: white;
-}
 
 .theatre {
 	font-size: 14px;
@@ -119,10 +111,6 @@
 	background: rgb(233, 233, 233);
 	border-radius: 2mm;
 	cursor: pointer;
-}
-
-.timings input[type="radio"] {
-	display: none;
 }
 
 .timings {
@@ -134,6 +122,20 @@
 	margin-top: 30px;
 }
 
+.timings input:checked+label {
+	background: rgb(285, 115, 115);
+	color: white;
+}
+
+.timings input:checked+label {
+	background: rgb(285, 115, 115);
+	color: white;
+}
+
+.timings input:checked+label {
+	background: rgb(285, 115, 115);
+	color: white;
+}
 .theatres {
 	width: 100%;
 	display: flex;
@@ -168,14 +170,28 @@
 	cursor: pointer;
 }
 
-.timings input:checked+label {
-	background: rgb(285, 115, 115);
-	color: white;
-}
-
 tr {
 	align-items: center;
 }
+  /* Add this style for flex container */
+  .theatres-and-times {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .theatres,
+  .times {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+
+.timings input[type="radio"] {
+	display: none;
+}
+
 </style>
 </head>
 <body>
@@ -231,173 +247,139 @@ tr {
 	<h2 style="margin-left: 6%;">Latest Movies</h2>
 
 	<div class="container mt-3">
-		<% List<Movie> movies = (List<Movie>) request.getAttribute("movies");
-		 List<users> userList = (List<users>) request.getAttribute("userList");
-           if (movies != null) {
-               int movieCount = 0;
-               for (Movie movie : movies) {
-                   if (movieCount % 4 == 0) {  
-                       %>
-		<div class="row">
-			<%
-                   }
-                   %>
-			<div class="col-md-3">
-				<div class="card">
-					<img class="card-img-top custom-card-image"
-						src="images/<%= movie.getMovie_Poster() %>" alt="Card image">
-					<div class="card-body">
-						<h4 class="card-title"><%= movie.getMovie_Name() %></h4>
-						<p class="card-text"><%= movie.getGenre() %></p>
-						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#myModal<%= movie.getMovie_Id() %>">Movie
-							Details</button>
-					</div>
-				</div>
-
-				<!-- Modal -->
-				<div class="modal fade" id="myModal<%= movie.getMovie_Id() %>"
-					tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-					aria-hidden="true">
-					<!-- Outer modal content -->
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle"><%= movie.getMovie_Name() %></h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<img src="images/<%= movie.getMovie_Poster() %>"
-									alt="Movie Poster" style="max-width: 100%; height: auto;">
-								<br>
-								<br>
-								<div style="display: flex; align-items: center;">
-									<h6 style="margin-right: 20px; font-weight: bold;"><%= movie.getGenre() %></h6>
-									<h6><%= movie.getMovie_Release_Date() %></h6>
-								</div>
-								<h4 style="margin-top: 20px; font-weight: bold;">About
-									Movie</h4>
-								<p><%= movie.getMovie_Description() %></p>
-								<h4 style="margin-top: 20px; font-weight: bold;">Star Cast</h4>
-								<p><%= movie.getMovie_Casts() %></p>
-
-								<!-- Button to trigger the nested modal -->
-								<button type="button" class="btn btn-primary"
-									data-toggle="modal"
-									data-target="#nestedModal<%= movie.getMovie_Id() %>">Select
-									Seats</button>
-
-								<!-- Nested modal -->
-								<div class="modal fade bd-example-modal-lg"
-									id="nestedModal<%= movie.getMovie_Id() %>" tabindex="-1"
-									role="dialog" aria-labelledby="nestedModalTitle"
-									aria-hidden="true">
-									<div class="modal-dialog modal-lg" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="nestedModalTitle"><%= movie.getMovie_Name() %></h5>
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body" style="align-items: center;">
-												<form action="Booking" method="post">
-													<h7>Total Seats</h7>
-													<br>
-													<div class="def-number-input number-input safari_only">
-														<button type="button"
-															onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-															class="minus"></button>
-														<input class="quantity" min="0" name="quantity" value="1"
-															type="number">
-														<button type="button"
-															onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-															class="plus"></button>
-													</div>
-
-													<div class="timings">
-														<table>
-															<tr>
-																<% 
-        												List<Theater> theaters = (List<Theater>) request.getAttribute("theaters");
-        												if (theaters != null) {
-            											for (Theater theater : theaters) { %>
-
-																<td>
-																	<div class="theatres">
-    																	<input type="hidden" class="form-control moviename" name="moviename" value="<%= movie.getMovie_Name() %>">
-    																	<%-- <input type="hidden" class="form-control" id="useremail" name="useremail" style="display: none;" value="<%= (String) session.getAttribute("useremail") %>">  
- --%>
-    																	<input type="radio" name="theatre_name" id="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>" value="<%= theater.getTheater_Name() %>" checked /> 
-																		<label for="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>" class="theatre"><%= theater.getTheater_Name() %></label>
-
-																	</div>
-																</td>
-																
-															<% } 
-        												} %>
-															</tr>
-															<tr>
-
-																<% 
-    												List<ShowTimes> showList = (List<ShowTimes>) request.getAttribute("showList");
-    												if (showList != null && !showList.isEmpty()) { %>
-																<% for (ShowTimes showtime : showList) { %>
-																<td>
-																	<div class="times">
-                    													<input type="radio" name="time_start" id="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>" value="<%= showtime.getStart_Time() %>" checked /> 
-																		<label for="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>" class="time"><%= showtime.getStart_Time() %></label>
-
-                													</div>
-																</td>
-																<% } %>
-																<% } else { %>
-															
-															<tr>
-																<td colspan="6">No show times available.</td>
-															</tr>
-															<% } %>
-															</tr>
-														</table>
-
-													<button type="submit" class="btn btn-primary">Select Seats</button>
-													</div>
-												</form>
-
-												<br>
-											</div>
-											<div class="modal-footer">
-												<button type="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-											</div>
-										</div>
-									</div>
-								</div>
-
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Close</button>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<%
-                   if ((movieCount + 1) % 4 == 0 || movieCount == movies.size() - 1) {
-                   %>
-		</div>
-		<%
-                   }
-                   movieCount++;
-               }
-           }
+        <% 
+        List<Movie> movies = (List<Movie>) request.getAttribute("movies");
+        List<users> userList = (List<users>) request.getAttribute("userList");
+        if (movies != null) {
+            int movieCount = 0;
+            for (Movie movie : movies) {
+                if (movieCount % 4 == 0) {  
         %>
-	</div>
-	<%@ include file="footer.html"%>
+        <div class="row">
+            <%
+                }
+            %>
+            <div class="col-md-3 mb-4" style="@media{ (min-width: 768px) flex: 0 0 auto; width: 50%;}">
+                <div class="card">
+                    <img class="card-img-top custom-card-image" src="images/<%= movie.getMovie_Poster() %>" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= movie.getMovie_Name() %></h4>
+                        <p class="card-text"><%= movie.getGenre() %></p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= movie.getMovie_Id() %>">Movie Details</button>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal<%= movie.getMovie_Id() %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle"><%= movie.getMovie_Name() %></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="images/<%= movie.getMovie_Poster() %>" alt="Movie Poster" style="max-width: 100%; height: auto;">
+                                <br>
+                                <br>
+                                <div style="display: flex; align-items: center;">
+                                    <h6 style="margin-right: 20px; font-weight: bold;"><%= movie.getGenre() %></h6>
+                                    <h6><%= movie.getMovie_Release_Date() %></h6>
+                                </div>
+                                <h4 style="margin-top: 20px; font-weight: bold;">About Movie</h4>
+                                <p><%= movie.getMovie_Description() %></p>
+                                <h4 style="margin-top: 20px; font-weight: bold;">Star Cast</h4>
+                                <p><%= movie.getMovie_Casts() %></p>
+
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nestedModal<%= movie.getMovie_Id() %>">Select Seats</button>
+
+                                <div class="modal fade bd-example-modal-lg" id="nestedModal<%= movie.getMovie_Id() %>" tabindex="-1" role="dialog" aria-labelledby="nestedModalTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="nestedModalTitle"><%= movie.getMovie_Name() %></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body" style="align-items: center;">
+                                                <form action="Booking" method="post">
+                                                    <div class="bo" style="display:flex;">
+                                                        <div>
+                                                            <img class="card-img-top custom-card-image" src="images/<%= movie.getMovie_Poster() %>" alt="Card image" style="height: 150px; width: 150px;">
+                                                            <input type="hidden" class="form-control moviename" name="MovieImage" value="<%= movie.getMovie_Poster() %>">
+                                                            <input type="hidden" class="form-control moviename" name="moviename" value="<%= movie.getMovie_Name() %>">
+                                                        </div>
+                                                        <div style="margin-left: 20%;margin-top:6%;">
+                                                            <h7 style="margin-left: 20%; margin-top:7%;">Total Seats</h7>
+                                                            <br>
+                                                            <div class="def-number-input number-input safari_only">
+                                                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                                                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timings">
+                                                        <div class="theatres-and-times">
+                                                            <div class="theatres" style="margin-left: 2%">
+                                                                <% 
+                                                                    List<Theater> theaters = (List<Theater>) request.getAttribute("theaters");
+                                                                    if (theaters != null) {
+                                                                        for (Theater theater : theaters) { %>
+                                                                            <div>
+                                                                                <input type="radio" name="theatre_name" id="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>" value="<%= theater.getTheater_Name() %>" checked /> 
+                                                                                <label for="<%= theater.getTheater_Id() %>_<%= movie.getMovie_Id() %>" class="theatre"><%= theater.getTheater_Name() %></label>
+                                                                            </div>
+                                                                        <% } 
+                                                                    } %>
+                                                            </div>
+                                                            <div class="times">
+                                                                <% 
+                                                                    List<ShowTimes> showList = (List<ShowTimes>) request.getAttribute("showList");
+                                                                    if (showList != null && !showList.isEmpty()) { 
+                                                                        for (ShowTimes showtime : showList) { %>
+                                                                            <div style="margin-left: 2%">
+                                                                                <input type="radio" name="time_start" id="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>" value="<%= showtime.getStart_Time() %>" checked /> 
+                                                                                <label for="time_<%= showtime.getShowtime_Id() %>_<%= movie.getMovie_Id() %>" class="time"><%= showtime.getStart_Time() %></label>
+                                                                            </div>
+                                                                        <% } 
+                                                                    } else { %>
+                                                                        <div>No show times available.</div>
+                                                                    <% } %>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Select Seats</button>
+                                                    </div>
+                                                </form>
+                                                <br>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%
+                if ((movieCount + 1) % 4 == 0 || movieCount == movies.size() - 1) {
+            %>
+        </div>
+        <%
+                }
+                movieCount++;
+            }
+        }
+        %>
+    </div>
+    <%@ include file="footer.html"%>
 </body>
 </html>
