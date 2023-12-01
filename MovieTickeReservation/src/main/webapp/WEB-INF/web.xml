@@ -159,8 +159,15 @@
  			<servlet-name>UserBookings</servlet-name>
  			<servlet-class>com.Servlets.UserBookings</servlet-class>
  		</servlet>
- 		    
-    <servlet-mapping>
+ 		<servlet>
+ 			<description>
+ 			</description>
+ 			<display-name>UEditTheaterServlet</display-name>
+ 			<servlet-name>UEditTheaterServlet</servlet-name>
+ 			<servlet-class>com.Servlets.UEditTheaterServlet</servlet-class>
+ 		</servlet>
+ 		
+ 	<servlet-mapping>
         <servlet-name>BookingServlet</servlet-name>
         <url-pattern>/booking</url-pattern>
     </servlet-mapping>
@@ -242,6 +249,12 @@
 		<servlet-name>UserBookings</servlet-name>
 		<url-pattern>/UserBookings</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UEditTheaterServlet</servlet-name>
+		<url-pattern>/UEditTheater</url-pattern>
+	</servlet-mapping>
+	
+	
 
     
 </web-app>

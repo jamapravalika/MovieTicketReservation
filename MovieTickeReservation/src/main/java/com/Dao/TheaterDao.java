@@ -7,20 +7,22 @@
 	import java.sql.Statement;
 	import java.util.ArrayList;
 	import java.util.List;
-
-	import com.Db.DbConnection;
-import com.Model.Movie;
-import com.Model.ShowTimes;
-import com.Model.Theater;
+    import com.Db.DbConnection;
+    import com.Model.Movie;
+    import com.Model.ShowTimes;
+    import com.Model.Theater;
 
 
 	public class TheaterDao implements TheaterDaoIntrf {
 		private static final String  Select_QUERY= "Select * from Theater";
 		private static final String Insert_QUERY = "Insert into Theater (TheatrName,address,capacity) values(?,?,?)";
-	
-		private static final String Delete_QUERY ="DELETE FROM Theater WHERE theaterId = ?";
+        private static final String Delete_QUERY ="DELETE FROM Theater WHERE theaterId = ?";
 		private static final String updateSql = "UPDATE theaters SET theater_name = ?, location = ? WHERE theater_id = ?";
-		
+		 private static final String SELECT_BY_ID_QUERY = "SELECT * FROM Theater WHERE theaterId = ?";
+		 private static  List<Theater> theater = new ArrayList<>();
+			
+		  List<Theater> theaList =  new ArrayList<Theater>();  
+			   
 		Connection con=DbConnection.getConnection();
 		
 		
@@ -51,30 +53,32 @@ import com.Model.Theater;
 		}
 
 		@Override
-		public void editTheater(Theater theater) {
+		public boolean editTheater(Theater theater) {
 			// TODO Auto-generated method stub
 			try  {
-	            // Create the SQL update statement
-	           
 	            
-	            // Create a prepared statement
-	            PreparedStatement preparedStatement = con.prepareStatement(updateSql);
+	            PreparedStatement pstm = con.prepareStatement(updateSql);
 
-	            // Set the new values for theater_name and location
-	            preparedStatement.setInt(1, thea.getTheater_Id());
-	            preparedStatement.setString(2, thea.getTheater_Name());
-	            preparedStatement.setString(3, thea.getAddress());
-	            
-	            // Set the theater_id for the WHERE clause
-	            preparedStatement.setInt(4, thea.getCapacity());
-	            preparedStatement.executeUpdate();
-	            
-	            
-			}
-			catch (SQLException e) {
+	          
+	            pstm.setInt(1, thea.getTheater_Id());
+	            pstm.setString(2, thea.getTheater_Name());
+	            pstm.setString(3, thea.getAddress());
+	            pstm.setInt(4, thea.getCapacity());
+	             int rowsUpdated = pstm.executeUpdate();
+	            return rowsUpdated > 0;
+	        } catch (SQLException e) {
 	            e.printStackTrace();
-	        } 
-			
+	        } finally {
+	            try {
+	                con.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+
+	        return false;
+	            
+	            
 		}
 
 		@Override
@@ -95,11 +99,11 @@ import com.Model.Theater;
 	        }
 			
 		}
-		@Override
+		
 		public List<Theater> displayTheaterdetails() {
 		    List<Theater> theater = new ArrayList<Theater>();
 
-		    try {
+		   try {
 		    	Connection conn = DbConnection.getConnection();
 		        Statement stmt = conn.createStatement();
 
@@ -123,10 +127,50 @@ import com.Model.Theater;
 		    return theater;
 		}
 
+		@Override
+	    public Theater getTheaterById(int theaterId) {
+	        Theater theater = null;
+	        try {
+	            PreparedStatement pstmt = con.prepareStatement(SELECT_BY_ID_QUERY);
+	            pstmt.setInt(1, theaterId);
+	            ResultSet result = pstmt.executeQuery();
 
+	            if (result.next()) {
+	                theater = new Theater();
+	                theater.setTheater_Id(result.getInt("theaterId"));
+	                theater.setTheater_Name(result.getString("theaterName"));
+	                theater.setAddress(result.getString("address"));
+	                theater.setCapacity(result.getInt("capacity"));
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return theater;
+	    }
+	
+public List<Theater> searchTheaters(String keyword) {
+	    List<Theater> results = new ArrayList<>();
+
+	    for (Theater theater : theaList) {
+	        if (theater.getTheater_Name().toLowerCase().contains(keyword.toLowerCase()) ||
+	            theater.getAddress().toLowerCase().contains(keyword.toLowerCase())) {
+	            results.add(theater);
+	        }
+	    }
+
+	    return results;
 	}
 
+@Override
+public List<Theater> getAllTheater() {
+	// TODO Auto-generated method stub
+	return null;
+}
 
-
-
+@Override
+public List<Movie> SearchMovies(String keyword) {
+	// TODO Auto-generated method stub
+	return null;
+}
+	}
 
